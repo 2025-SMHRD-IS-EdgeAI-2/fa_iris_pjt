@@ -16,7 +16,7 @@ app = FastAPI()
 # ==========================================
 # 1. 설정 및 상수 (랑랑 & 팀장님 공통)
 # ==========================================
-GEMINI_API_KEY = "AIzaSyBCcECm13w5D9oy97DUkUyVNYmeby0B-J4"
+GEMINI_API_KEY = "1"
 
 DB_CONFIG = {
     "host": "project-db-cgi.smhrd.com",
