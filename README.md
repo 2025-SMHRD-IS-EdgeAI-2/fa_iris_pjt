@@ -115,10 +115,10 @@
     <td align="center"><strong>황수영</strong></td>
   </tr>
   <tr>
-    <td align="center"><b>Frontend</b></td>
-    <td align="center"><b>Frontend</b></td>
-    <td align="center"><b>Backend</b></td>
-    <td align="center"><b>Backend</b></td>
+    <td align="center"><b>PM, Back-End, H/W 제작</b></td>
+    <td align="center"><b>영상제작, 홍보 자료 제작</b></td>
+    <td align="center"><b>Back-End, 통합 테스트 구현</b></td>
+    <td align="center"><b>Front-End, 통합 테스트 구현</b></td>
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
