@@ -111,22 +111,22 @@
         <div class="text-wrapper-11">집중도</div>
         <img class="rectangle-2" src="img/Rectangle1037.svg" />
         <div class="text-wrapper-12">View</div>        
-        <div class="text-wrapper-13" style="font-size: 2rem;top:3050px;left:250px">-</div>
+        <div class="text-wrapper-13" style="font-size: 2rem;top:3050px;left:250px">30%</div>
       </div>
       <div class="frame-2">
         <div class="rectangle"></div>
         <div class="text-wrapper-2">스트레스 지수</div>
         <img class="rectangle-2" src="img/Rectangle1037.svg" />
         <div class="text-wrapper-3">View</div>
-        <div class="text-wrapper-4" style="font-size: 2rem;top:3050px;left:250px">-</div>
+        <div class="text-wrapper-4" style="font-size: 2rem;top:3050px;left:250px">30%</div>
       </div>
 
       <div class="frame-3 chart-month-wrap">
-        <canvas id="monthChart" height="200"></canvas>
+        <canvas id="monthChart"></canvas>
       </div>
       <img class="line" src="img/Line28.svg" />
       <div class="frame-4 chart-month-wrap">               
-        <canvas id="focusChart" height="200"></canvas>
+        <canvas id="focusChart" class="chart-canvas"></canvas>
       </div>
       <div class="vuesax-bold-user-wrapper"></div>
       <div class="group-3">
@@ -159,42 +159,26 @@
       </a>
     </nav>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-let focusChartInstance = null;
-let stressChartInstance = null;
-
-/* =========================
-   날짜 → 요일
-========================= */
 function toWeekday(dateString) {
   const days = ['일', '월', '화', '수', '목', '금', '토'];
-  const date = new Date(dateString); // ← 핵심
-  if (isNaN(date)) return '';
+  const date = new Date(dateString);
   return days[date.getDay()];
 }
 
-/* =========================
-   마지막 유효 숫자
-========================= */
-function lastValidNumber(arr) {
-  for (let i = arr.length - 1; i >= 0; i--) {
-    if (arr[i] !== null && arr[i] !== undefined) {
-      return Number(arr[i]);
-    }
-  }
-  return 0;
-}
 
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("🔥 main.html JS 실행됨");
 
-  const userNo = localStorage.getItem("user_no");
-  if (!userNo) {
-    alert("로그인이 필요합니다");
-    location.href = "../login/login.html";
-    return;
-  }
+let stream = null; // ✅ stream 전역 선언 (필수)
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const userNo = localStorage.getItem("user_no");
+    console.log(userNo);
+    if (!userNo) {
+      alert("로그인이 필요합니다");
+      location.href = "../login/login.html";
+      return;
+    } 
     const sidebar = document.getElementById("sidebar");
     const overlay = document.getElementById("overlay");
     const menuBtn = document.getElementById("menuBtn");
@@ -220,85 +204,93 @@ document.addEventListener("DOMContentLoaded", () => {
       overlay.classList.remove("active");
     });
 
-
-  fetch(`http://192.168.219.128:4000/api/dashboard/${userNo}`)
+    fetch(`http://192.168.219.128:4000/api/dashboard/${userNo}`)
     .then(res => res.json())
     .then(data => {
-      console.log("📦 API 응답:", data);
-
-      if (data.status !== "success") return;
-
-      document.getElementById("helloText").innerText =
+        if (data.status !== "success") return;
+        // console.log(data);        
+        // 1️⃣ 인사말
+        document.getElementById("helloText").innerText =
         `${data.name}님 안녕하세요!`;
 
-      const reports = data.reports;
-      if (!reports || reports.length === 0) return;
+        const reports = data.reports;
+        
+        // 2️⃣ 날짜 / 점수 분리
+        //const labels = reports.map(r => r.report_date);
+        const focusData = reports.map(r => r.avg_focus_score);
+        const stressData = reports.map(r => r.avg_stress_score);
+        
+        // 3️⃣ 오늘 점수 (마지막 값)
+        let todayFocus = focusData.at(-1) ?? 0;
+        if (!reports || reports.length === 0) {
+            console.log("📭 리포트 데이터 없음");
+            return;
+        }
+        let todayStress = stressData.at(-1) ?? 0;
+        todayFocus = Math.round(Number(todayFocus),0);
+        todayStress = Math.round(Number(todayStress),0);
 
-      const labels = reports.map(r => toWeekday(r.report_date));
-      const focusData = reports.map(r => r.avg_focus_score ?? 0);
-      const stressData = reports.map(r => r.avg_stress_score ?? 0);
-
-      console.log("📊 focusData:", focusData);
-      console.log("📊 stressData:", stressData);
-      console.log("📊 labels:", labels);
-
-      const todayFocus = Math.round(lastValidNumber(focusData));
-      const todayStress = Math.round(lastValidNumber(stressData));
-
-      document.querySelector(".text-wrapper-13").innerText = `${todayFocus}%`;
-      document.querySelector(".text-wrapper-4").innerText = `${todayStress}%`;
-
-      drawBarChart(
-        "monthChart",
-        labels,
-        focusData,
-        "#33D6A6",
-        c => focusChartInstance = c
-      );
-
-      drawBarChart(
-        "focusChart",
-        labels,
-        stressData,
-        "#FF8A8A",
-        c => stressChartInstance = c
-      );
+        const labels = reports.map(item => toWeekday(item.report_date));
+        
+        console.log(todayStress);
+        document.querySelector(".text-wrapper-13").innerText = `${todayFocus}%`;
+        document.querySelector(".text-wrapper-4").innerText = `${todayStress}%`;
+        console.log(labels);
+        // 4️⃣ 차트 그리기
+        drawFocusChart(labels, focusData);
+        drawStressChart(labels, stressData);
     });
+
 });
 
-/* =========================
-   공통 차트 함수
-========================= */
-function drawBarChart(canvasId, labels, data, color, setInstance) {
-  const ctx = document.getElementById(canvasId);
-  if (!ctx) {
-    console.error("❌ canvas 없음:", canvasId);
-    return;
-  }
 
-  const chart = new Chart(ctx, {
+function drawFocusChart(labels, data) {
+  new Chart(document.getElementById("monthChart"), {
     type: "bar",
     data: {
       labels,
       datasets: [{
         data,
-        backgroundColor: color,
-        borderRadius: 12,
-        barThickness: 12
+        backgroundColor: "#33D6A6",
+        borderRadius: 20,
+        barThickness: 10
       }]
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: { legend: { display: false } },
-      scales: {
-        y: { min: 0, max: 100, ticks: { stepSize: 50 } }
+    options: chartOptions()
+  });
+}
+
+function drawStressChart(labels, data) {
+  new Chart(document.getElementById("focusChart"), {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [{
+        data,
+        backgroundColor: "#FF8A8A",
+        borderRadius: 20,
+        barThickness: 10
+      }]
+    },
+    options: chartOptions()
+  });
+}
+
+function chartOptions() {
+  return {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: {
+        min: 0,
+        max: 100,
+        ticks: { stepSize: 50 }
       }
     }
-  });
-
-  setInstance(chart);
+  };
 }
+
 </script>
 
   </body>

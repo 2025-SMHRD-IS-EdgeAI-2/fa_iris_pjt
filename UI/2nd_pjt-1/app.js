@@ -374,30 +374,31 @@ app.get("/api/daily-report", async (req, res) => {
     );
 
     // 2️⃣ study_record — 🔥 핵심 수정
-    const today = new Date();
-    const startOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0);
-    const endOfDay   = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1, 0, 0, 0);
-
-    const startStr = startOfDay.toISOString().slice(0, 19).replace('T', ' ');
-    const endStr   = endOfDay.toISOString().slice(0, 19).replace('T', ' ');
-
-
     const [timeRows] = await db.query(
       `
       SELECT
-        SUM(TIMESTAMPDIFF(SECOND, start_time, end_time)) AS total_seconds
+        IFNULL(
+          SUM(
+            TIMESTAMPDIFF(
+              MINUTE,
+              start_time,
+              IFNULL(end_time, NOW())
+            )
+          ),
+          0
+        ) AS total_minutes
       FROM study_record
-      WHERE user_no = ? AND DATE(start_time) = ?
+      WHERE user_no = ?
+        AND DATE(start_time) = ?
       `,
       [user_no, date]
     );
 
-    const totalSec = timeRows[0].total_seconds; // null이면 측정 안 함
     res.json({
       status: "success",
       data: {
         ...(reportRows[0] || {}),
-        total_seconds: timeRows[0].total_seconds  
+        total_minutes: timeRows[0].total_minutes
       }
     });
 
