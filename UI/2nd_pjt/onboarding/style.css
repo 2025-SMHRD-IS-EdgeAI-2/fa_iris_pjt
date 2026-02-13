@@ -1,0 +1,246 @@
+.screen {
+    display: flex;
+    flex-direction: column;
+    height: 812px;
+    width: 375px;
+    align-items: center;
+    gap: 59px;
+    position: relative;
+    background-color: #ffffff;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.screen .group {
+    position: relative;
+    width: 451px;
+    height: 839px;
+    margin-left: -38px;
+    margin-right: -38px;
+    opacity: 0.8;
+}
+
+.screen .ellipse {
+    position: absolute;
+    top: 246px;
+    left: 362px;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    filter: blur(75px);
+    background: linear-gradient(180deg, rgba(124, 70, 240, 1) 0%, rgba(124, 70, 240, 0.15) 100%);
+}
+
+.screen .div {
+    position: absolute;
+    top: 554px;
+    left: 0;
+    width: 96px;
+    height: 96px;
+    border-radius: 48px;
+    filter: blur(75px);
+    background: linear-gradient(180deg, rgba(70, 189, 240, 1) 0%, rgba(70, 179, 240, 0.15) 100%);
+}
+
+.screen .ellipse-2 {
+    position: absolute;
+    top: 224px;
+    left: 101px;
+    width: 74px;
+    height: 74px;
+    border-radius: 37px;
+    filter: blur(75px);
+    background: linear-gradient(180deg, rgba(95, 39, 255, 1) 0%, rgba(202, 184, 255, 1) 100%);
+}
+
+.screen .ellipse-3 {
+    position: absolute;
+    top: 781px;
+    left: 269px;
+    width: 58px;
+    height: 58px;
+    border-radius: 29px;
+    filter: blur(65px);
+    background: linear-gradient(180deg, rgba(240, 182, 70, 1) 0%, rgba(240, 203, 70, 0.15) 100%);
+}
+
+.screen .ellipse-4 {
+    position: absolute;
+    top: 0;
+    left: 13px;
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    filter: blur(75px);
+    background: linear-gradient(180deg, rgba(70, 240, 128, 1) 0%, rgba(70, 240, 138, 0.15) 100%);
+}
+
+.screen .ellipse-5 {
+    position: absolute;
+    top: 345px;
+    left: 333px;
+    width: 118px;
+    height: 118px;
+    border-radius: 59px;
+    filter: blur(75px);
+    background: linear-gradient(180deg, rgba(237, 240, 70, 1) 0%, rgba(240, 233, 70, 0.15) 100%);
+}
+
+.screen .frame {
+    display: flex;
+    flex-direction: column;
+    width: 335px;
+    align-items: flex-end;
+    gap: 30px;
+    position: absolute;
+    top: 298px;
+    left: 19px;
+}
+
+.screen .rectangle {
+    position: relative;
+    width: 331px;
+    height: 52px;
+}
+
+.screen .text-wrapper {
+    position: absolute;
+    top: 96px;
+    left: 121px;
+    width: 98px;
+    font-family: var(--lexend-deca-semi-bold-19px-font-family);
+    font-weight: var(--lexend-deca-semi-bold-19px-font-weight);
+    color: #ffffff;
+    font-size: var(--lexend-deca-semi-bold-19px-font-size);
+    text-align: right;
+    letter-spacing: var(--lexend-deca-semi-bold-19px-letter-spacing);
+    line-height: var(--lexend-deca-semi-bold-19px-line-height);
+    font-style: var(--lexend-deca-semi-bold-19px-font-style);
+}
+
+.screen .text-wrapper-2 {
+    position: absolute;
+    top: 14px;
+    left: 132px;
+    width: 67px;
+    font-family: var(--lexend-deca-semi-bold-19px-font-family);
+    font-weight: var(--lexend-deca-semi-bold-19px-font-weight);
+    color: #ffffff;
+    font-size: var(--lexend-deca-semi-bold-19px-font-size);
+    text-align: right;
+    letter-spacing: var(--lexend-deca-semi-bold-19px-letter-spacing);
+    line-height: var(--lexend-deca-semi-bold-19px-line-height);
+    font-style: var(--lexend-deca-semi-bold-19px-font-style);
+}
+
+.screen .text-wrapper-3 {
+    position: absolute;
+    top: 177px;
+    left: 127px;
+    width: 85px;
+    font-family: var(--lexend-deca-semi-bold-19px-font-family);
+    font-weight: var(--lexend-deca-semi-bold-19px-font-weight);
+    color: #ffffff;
+    font-size: var(--lexend-deca-semi-bold-19px-font-size);
+    text-align: right;
+    letter-spacing: var(--lexend-deca-semi-bold-19px-letter-spacing);
+    line-height: var(--lexend-deca-semi-bold-19px-line-height);
+    font-style: var(--lexend-deca-semi-bold-19px-font-style);
+}
+
+.screen .img {
+    position: absolute;
+    top: 16px;
+    left: 215px;
+    width: 93px;
+    height: 93px;
+}
+
+.screen .computer-perspective {
+    position: absolute;
+    top: 704px;
+    left: 119px;
+    width: 76px;
+    height: 74px;
+    object-fit: cover;
+}
+
+.screen .calendar-perspective {
+    position: absolute;
+    top: 540px;
+    left: 34px;
+    width: 78px;
+    height: 76px;
+    object-fit: cover;
+}
+
+.screen .chart-perspective {
+    position: absolute;
+    top: 109px;
+    left: 37px;
+    width: 75px;
+    height: 78px;
+    object-fit: cover;
+}
+
+.screen .books-perspective {
+    position: absolute;
+    top: 189px;
+    left: 259px;
+    width: 78px;
+    height: 73px;
+    object-fit: cover;
+}
+
+.screen .dashboard {
+    position: absolute;
+    top: 603px;
+    left: 260px;
+    width: 83px;
+    height: 79px;
+    object-fit: cover;
+}
+
+.action-btn {
+  width: 80%;
+  max-width: 300px;
+  margin: 10px auto;
+  display: block;
+  padding: 14px 0;
+  background-color: #6ee7b7;
+  border: none;
+  border-radius: 24px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.action-btn:active {
+  transform: scale(0.97);
+}
+
+.clock-perspective {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  width: 70px;
+  z-index: 10;
+}
+
+.btn-wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 260px;
+  z-index: 5;
+}
+
+.action-btn {
+  width: 100%;
+}

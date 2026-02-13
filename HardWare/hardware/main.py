@@ -1,196 +1,250 @@
 import time
+import json
+import os
 import statistics
-from datetime import datetime
-import traceback
-import requests  # ★ 추가됨: 서버 통신용 라이브러리
-import json      # ★ 추가됨: JSON 데이터 처리
+import requests
+from datetime import date
 
 from sensors.gsr_sensor1 import GSRSensor
 from sensors.hr_sensor import HRSensor
-from stress.rule_engine import calculate_stress
+from stress.rule_engine1 import calculate_stress
 
 import lcd
 import switch
+from button import Button
 
 import sys
 import io
-
-# UTF-8 강제 설정
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8', line_buffering=True)
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8', line_buffering=True)
 
-# =========================
-# ★ 사용자 설정 (값 잘 들어온다고 하신 설정 반영)
-MEASURE_TIME = 20       
-SAMPLE_INTERVAL = 1.0   
-STABLE_COUNT = 3        
-
-# ★ [중요] 서버 주소 설정 (본인의 서버 IP로 변경 필수!)
-# 예: "http://192.168.0.10:3002/api/stress" 
-# 경로(/api/stress 등)는 서버 코드의 라우터 설정에 맞춰야 합니다.
+MEASURE_TIME = 20
+BASELINE_FILE = "baseline.json"
 SERVER_URL = "http://192.168.219.128:3002/api/study_record"
-# =========================
 
-def stress_level_text(score):
-    if score <= 25:
-        return "Stable"
-    elif score <= 50:
-        return "Mild Stress"
-    elif score <= 75:
-        return "Mid Stress"
-    else:
-        return "High Stress"
+reset_baseline = False
 
-# -------------------------
-# ★ 추가된 함수: 서버로 데이터 전송
-def send_to_server(score, level):
-    # 서버 코드의 const { stress_score } = req.body; 와 이름을 맞춰야 합니다.
-    payload = {
-        "stress_score": score  # ★ Key 이름을 stress_score로 변경
-    }
-    
-    print(f"\n[전송] 서버({SERVER_URL})로 데이터 전송 시도... (Data: {payload})")
-    
+
+def stress_text(score):
+    if score <= 20: return "Very Calm"
+    if score <= 40: return "Stable"
+    if score <= 60: return "Mild"
+    if score <= 80: return "Stress"
+    return "High"
+
+
+def send_to_server(score):
     try:
-        # JSON 형식으로 전송
-        response = requests.post(SERVER_URL, json=payload, timeout=5)
-        
-        if response.status_code == 200:
-            print("   >> 전송 성공! 서버 응답:", response.json())
-            return True
-        else:
-            print(f"   >> 전송 실패 (Status: {response.status_code})")
-            print(f"   >> 응답 내용: {response.text}")
-            return False
-            
+        requests.post(SERVER_URL, json={"stress_score": score}, timeout=3)
+        print("[SERVER] sent:", score)
     except Exception as e:
-        print(f"   >> [에러] 연결 실패: {e}")
-        return False
+        print("[SERVER] fail:", e)
 
-# -------------------------
-def stable_read(read_func, key):
+
+def load_hr_baseline():
+    if not os.path.exists(BASELINE_FILE):
+        return None
+    with open(BASELINE_FILE, "r") as f:
+        data = json.load(f)
+    if data["date"] != str(date.today()):
+        return None
+    return data["hr"]
+
+
+def save_hr_baseline(hr_base):
+    with open(BASELINE_FILE, "w") as f:
+        json.dump({
+            "date": str(date.today()),
+            "hr": hr_base
+        }, f)
+
+
+def measure_hr_baseline(hr, duration=10):
     values = []
-    for _ in range(STABLE_COUNT):
-        try:
-            data = read_func()
-            if data is None: continue
-            if key not in data: continue
-            values.append(data[key])
-        except: pass
-        time.sleep(0.1)
-
-    if len(values) < 2: # 안정화 카운트가 3으로 줄었으므로 최소 2개면 통과
-        return None
-    return sum(values) / len(values)
-
-# -------------------------
-def measure_stress(gsr, hr):
-    print("\n[측정] 스트레스 측정 시작")
-    lcd.write(1, "Measuring...")
-    lcd.write(2, "Please wait")
-
-    stress_values = []
     start = time.time()
+    while time.time() - start < duration:
+        d = hr.read()
+        if d and "hr" in d:
+            values.append(d["hr"])
+        time.sleep(0.5)
+    return statistics.mean(values) if len(values) >= 5 else None
 
-    while time.time() - start < MEASURE_TIME:
-        gsr_v = stable_read(gsr.read, "gsr") 
-        hr_bpm = stable_read(hr.read, "hr")
-        
-        # 값이 없으면 대기 후 다시 시도
-        if gsr_v is None or hr_bpm is None:
-            print(f"⏱ {int(time.time()-start):02d}s | 센서 값 대기중...")
+
+def measure_stress(gsr, hr, hr_base, btn):
+    global reset_baseline
+
+    if gsr.baseline is None:
+        raise RuntimeError("GSR baseline is None")
+
+    scores = []
+
+    for sec in range(MEASURE_TIME, 0, -1):
+
+        if btn.is_pressed():
+            reset_baseline = True
+            return None
+
+        lcd.clear()
+        lcd.write(1, "Measuring")
+        lcd.write(2, f"{sec}s left")
+
+        g = gsr.read()
+        h = hr.read()
+
+        if not g or not h:
             time.sleep(1)
+            print("센서 불안정 (GSR 또는 HR)")
             continue
-        
-        # 값 출력
-        print(f"⏱ {int(time.time()-start):02d}s | GSR={gsr_v:.3f}V | HR={hr_bpm:.1f}")
 
-        try:
-            stress = calculate_stress({"voltage": gsr_v}, {"bpm": hr_bpm})
-        except:
-            stress = 50
+        score = calculate_stress(
+            gsr_now=g["gsr"],
+            gsr_base=gsr.baseline,
+            hr_now=h["hr"],
+            hr_base=hr_base,
+            spo2_now=h.get("spo2", None)
+        )
 
-        stress_values.append(stress)
-        time.sleep(SAMPLE_INTERVAL)
+        scores.append(score)
 
-    if len(stress_values) < 3: # 데이터 개수 기준 완화
-        print("유효한 측정값 부족")
-        return None
+        hr_delta = int(round(h['hr'] - hr_base))
+        hr_ratio = hr_delta / hr_base
+        spo2 = h.get("spo2", None)
 
-    cut = int(len(stress_values) * 0.3)
-    # 데이터가 너무 적으면 전체 평균, 많으면 앞부분 자르기
-    if cut > 0:
-        final = int(statistics.median(stress_values[cut:]))
-    else:
-        final = int(statistics.median(stress_values))
+        print(
+            f"{sec}s | "
+            f"GSR={g['gsr']:.4f} (Δ={g['delta']:+.4f}) | "
+            f"HR={h['hr']} (Δ={hr_delta:+d}, {hr_ratio*100:+.1f}%) | "
+            f"SpO2={spo2 if spo2 else 'NA'} | "
+            f"SCORE={score}"
+        )
 
-    return final
+        time.sleep(1)
 
+    if len(scores) < 5:
+        return 25
+
+    return int(round(statistics.median(scores) / 5) * 5)
+
+
+# =========================
+# MAIN
 # =========================
 if __name__ == "__main__":
-    try:
-        print("==== 시스템 시작 ====")
-        lcd.init()
-        lcd.clear()
-        
-        gsr = GSRSensor()
-        print("[초기화] GSR 캘리브레이션")
-        baseline = gsr.calibrate(duration=3) # 시간 단축
+    lcd.init()
+    lcd.clear()
 
-        print("[초기화] HR 센서")
-        hr = HRSensor()
-        hr.setup()
-        
-        # 시작 전 LCD 표시
-        lcd.write(1, "System Ready")
-        lcd.write(2, "Switch ON")
+    gsr = GSRSensor()
+    hr = HRSensor()
+    hr.setup()
 
-        state = "IDLE"
+    btn = Button(17)
 
-        while True:
-            if state == "IDLE":
-                if switch.is_on():
-                    state = "MEASURE"
-                    time.sleep(0.5)
+    lcd.write(1, "System Ready")
+    lcd.write(2, "Switch ON")
 
-            elif state == "MEASURE":
-                result = measure_stress(gsr, hr)
-                
-                if result is None:
-                    print("측정 실패")
-                    lcd.clear()
-                    lcd.write(1, "Measure Fail")
-                    lcd.write(2, "Try Again")
-                else:
-                    level_text = stress_level_text(result)
-                    print("\n===== 측정 완료 =====")
-                    print(f"Stress Index : {result}")
-                    print(f"Level        : {level_text}")
+    while True:
 
-                    lcd.clear()
-                    lcd.write(1, f"Stress: {result}")
-                    lcd.write(2, level_text)
-                    
-                    # ★ 여기서 서버로 전송
-                    lcd.write(2, "Sending...") # LCD에 전송중 표시
-                    send_to_server(result, level_text)
-                    
-                    # 전송 후 다시 결과 표시
-                    lcd.write(2, level_text) 
+        if btn.is_pressed():
+            reset_baseline = True
+            lcd.clear()
+            lcd.write(1, "Reset Baseline")
+            lcd.write(2, "Please Wait")
+            time.sleep(2)
 
-                time.sleep(3) 
-                state = "WAIT"
-
-            elif state == "WAIT":
-                if not switch.is_on():
-                    lcd.clear()
-                    lcd.write(1, "System Ready")
-                    lcd.write(2, "Switch ON")
-                    state = "IDLE"
-            
+        if not switch.is_on():
             time.sleep(0.2)
+            continue
 
-    except KeyboardInterrupt:
-        print("\n시스템 종료")
+        if reset_baseline:
+            if os.path.exists(BASELINE_FILE):
+                os.remove(BASELINE_FILE)
+            reset_baseline = False
+
+        # ---------- GSR BASELINE ----------
         lcd.clear()
-        switch.cleanup()
+        lcd.write(1, "GSR Calibrate")
+        lcd.write(2, "Hold still")
+        print("[BASELINE] GSR calibrate")
+        gsr.calibrate(duration=5)
+
+        print(f"[BASELINE] GSR = {gsr.baseline:.4f}")
+        lcd.clear()
+        lcd.write(1, "GSR Baseline")
+        lcd.write(2, f"{gsr.baseline:.3f}")
+        time.sleep(2)
+
+        # ---------- HR BASELINE ----------
+        hr_base = load_hr_baseline()
+        if hr_base is None:
+            lcd.clear()
+            lcd.write(1, "HR Calibrate")
+            lcd.write(2, "Hold still")
+            print("[BASELINE] HR baseline")
+            hr_base = measure_hr_baseline(hr)
+
+            if hr_base is None:
+                lcd.clear()
+                lcd.write(1, "Baseline Fail")
+                lcd.write(2, "Retry")
+                time.sleep(2)
+                continue
+
+            save_hr_baseline(hr_base)
+
+            print(f"[BASELINE] HR = {hr_base:.1f} bpm")
+            lcd.clear()
+            lcd.write(1, "HR Baseline")
+            lcd.write(2, f"{hr_base:.1f} bpm")
+            time.sleep(2)
+
+        # ---------- SpO2 BASELINE ----------
+        spo2_values = []
+        start = time.time()
+
+        lcd.clear()
+        lcd.write(1, "SpO2 Calibrate")
+        lcd.write(2, "Hold still")
+        print("[BASELINE] SpO2 calibrate")
+
+        while time.time() - start < 8:
+            d = hr.read()
+            if d and "spo2" in d and d["spo2"] is not None:
+                spo2_values.append(d["spo2"])
+            time.sleep(0.5)
+
+        spo2_base = int(round(statistics.mean(spo2_values))) if len(spo2_values) >= 5 else 98
+
+        print(f"[BASELINE] SpO2 = {spo2_base}%")
+        lcd.clear()
+        lcd.write(1, "SpO2 Baseline")
+        lcd.write(2, f"{spo2_base}%")
+        time.sleep(2)
+
+        # ---------- MEASURE ----------
+        result = measure_stress(gsr, hr, hr_base, btn)
+
+        if reset_baseline:
+            lcd.clear()
+            lcd.write(1, "Baseline Reset")
+            lcd.write(2, "Restarting")
+            time.sleep(2)
+            continue
+
+        if result is None:
+            lcd.clear()
+            lcd.write(1, "Measure Fail")
+            lcd.write(2, "Retry")
+            time.sleep(3)
+        else:
+            lcd.clear()
+            lcd.write(1, f"Stress {result}")
+            lcd.write(2, stress_text(result))
+            send_to_server(result)
+            time.sleep(5)
+
+        lcd.clear()
+        lcd.write(1, "System Ready")
+        lcd.write(2, "Switch OFF")
+
+        while switch.is_on():
+            time.sleep(0.2)

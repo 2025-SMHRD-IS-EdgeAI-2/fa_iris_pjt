@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../sidebar/style.css">
+  </head>
+  <body>
+    <div id="overlay" class="overlay"></div>
+    <aside id="sidebar" class="sidebar">
+       <div class="frame">
+        <div class="div">
+        <div class="text-wrapper">Username</div>
+        <div class="div-2">
+          <div class="text-wrapper-2">email</div>
+          <img class="arrow-drop-down" src="../sidebar/img/Vector.svg" />
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="bottom-icons">
+          <div class="nav-text-item"></div>
+          <div class="nav-text-item"></div>
+          <div class="nav-text-item">
+            <div class="content">
+              <div class="vector-wrapper"><img class="vector" src="../sidebar/img/Settings.svg" /></div>
+              <div class="label">Settings</div>
+            </div>
+          </div>
+          <div class="nav-text-item">
+            <div class="content">
+              <div class="vector-wrapper"><img class="img" src="../sidebar/img/logout.svg" /></div>
+              <div class="label">Logout</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="top-items-wrapper">
+        <div class="top-items">
+          <div class="nav-text-item-2">
+            <div class="content">
+              <img class="vector-wrapper" src="../sidebar/img/VectorDaily.svg" />
+              <div class="label-2">Daily 집중 리포트</div>
+            </div>
+          </div>
+          <div class="content-2">
+            <div class="text-wrapper-3">피드백</div>
+            <img class="chat-line" src="../sidebar/img/VectorP.svg" />
+          </div>
+          <div class="text-wrapper-4">마이페이지</div>
+          <img class="vector-2" src="../sidebar/img/VectorProfile.svg" />
+          <p class="p">일지 / 일기 기록 관리</p>
+          <img class="todo-line" src="../sidebar/img/VectorW.svg" />
+          <div class="text-wrapper-5">DATA</div>
+          <img class="vector-3" src="../sidebar/img/VectorData.svg" />
+        </div>
+      </div>
+      <img class="line" src="../sidebar/img/Line6.svg" />
+      <img class="line-2" src="../sidebar/mg/Line7.svg" />
+      <img class="dp" src="../sidebar/img/dp.svg" />
+</aside>
+    <div class="main">
+      <div class="group">
+        <div class="ellipse"></div>
+        <div class="div"></div>
+        <div class="ellipse-2"></div>
+        <div class="ellipse-3"></div>
+        <div class="ellipse-4"></div>
+        <div class="ellipse-5"></div>
+      </div>
+      <div class="div-wrapper"><div class="hello" id="helloText">OO님 안녕하세요!</div></div>
+      <img class="vuesax-bold" src="img/notification.svg" />
+      <div class="frame-5">
+        <div class="rectangle"></div>
+        <div class="text-wrapper-11">집중도</div>
+        <img class="rectangle-2" src="img/Rectangle1037.svg" />
+        <div class="text-wrapper-12">View</div>        
+        <div class="text-wrapper-13" style="font-size: 2rem;top:3050px;left:250px">30%</div>
+      </div>
+      <div class="frame-2">
+        <div class="rectangle"></div>
+        <div class="text-wrapper-2">스트레스 지수</div>
+        <img class="rectangle-2" src="img/Rectangle1037.svg" />
+        <div class="text-wrapper-3">View</div>
+        <div class="text-wrapper-4" style="font-size: 2rem;top:3050px;left:250px">30%</div>
+      </div>
+
+      <div class="frame-3 chart-month-wrap">
+        <canvas id="monthChart"></canvas>
+      </div>
+      <img class="line" src="img/Line28.svg" />
+      <div class="frame-4 chart-month-wrap">               
+        <canvas id="focusChart" class="chart-canvas"></canvas>
+      </div>
+      <div class="vuesax-bold-user-wrapper"><img class="vuesax-bold-user" src="img/Group2996.svg" /></div>
+      <div class="group-3">
+        <img id="menuBtn" class="icon-menu-2" src="img/icon_menu.png" /> <img class="vuesax-bold-2" src="img/notification.svg" />
+    </div>
+    </div>
+      <div class="learn-btns">
+        <button id="startBtn" class="learn-start">학습 시작</button>
+        <button id="stopBtn" class="learn-stop">학습 종료</button>
+        <video id="webcam" autoplay playsinline style="display:none;"></video>
+      </div>
+
+     <!-- 하단 네비게이션 -->
+  <div class="bottom-bar">
+    <nav class="bottom-nav">
+      <a href="../license/license.html" class="nav-item">
+        <img src="img/Group.png" alt="daily" />
+      </a>
+
+      <a href="../data/data.html" class="nav-item">
+        <img src="img/calendar.png" alt="data" />
+      </a>
+
+      <a href="main.html" class="nav-item active">
+        <img src="img/home.png" alt="home" />
+      </a>
+
+      <a href="../diary/diary.html" class="nav-item">
+        <img src="img/document-text.png" alt="diary" />
+      </a>
+
+      <a href="../profile/profile.html" class="nav-item">
+        <img src="img/profile-2user.png" alt="profile" />
+      </a>
+    </nav>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+let stream = null; // ✅ stream 전역 선언 (필수)
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const userNo = localStorage.getItem("user_no");
+
+    if (!userNo) {
+      alert("로그인이 필요합니다");
+      location.href = "../login/login.html";
+      return;
+    } 
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const menuBtn = document.getElementById("menuBtn");
+    const startBtn = document.getElementById("startBtn");
+    const stopBtn = document.getElementById("stopBtn");
+    const webcam = document.getElementById("webcam");
+
+    if (!sidebar || !overlay || !menuBtn) {
+      console.log("❌ 연결 실패", { sidebar, overlay, menuBtn });
+      return;
+    }
+
+    // ==============================
+    // 사이드바 열기/닫기
+    // ==============================
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.add("active");
+      overlay.classList.add("active");
+    });
+
+    overlay.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+
+    // ==============================
+    // ✅ 학습 시작 버튼 (웹캠 ON)
+    // ==============================
+//     startBtn.addEventListener("click", async () => {
+//       try {
+//         if (stream) {
+//           alert("이미 학습이 시작되었습니다!");
+//           return;
+//         }
+
+//         stream = await navigator.mediaDevices.getUserMedia({
+//           video: true,
+//           audio: false   // ✅ 여기만 변경
+//         });
+
+//         webcam.style.display = "block";
+//         webcam.srcObject = stream;
+//         await webcam.play();
+
+//         alert("학습 시작! (웹캠 ON)");
+//       } catch (err) {
+//         // alert("카메라 권한을 허용해야 합니다!");
+//         console.log("웹캠 에러 이름:", err.name);
+//         console.log("웹캠 에러 메시지:", err.message);
+//       }
+//     });
+
+//     // ==============================
+//     // ✅ 학습 종료 버튼 (웹캠 OFF)
+//     // ==============================
+//     stopBtn.addEventListener("click", () => {
+//       if (!stream) {
+//         alert("학습이 시작되지 않았습니다!");
+//         return;
+//       }
+
+//       stream.getTracks().forEach((track) => track.stop());
+//       webcam.srcObject = null;
+//       webcam.style.display = "none"; // ✅ 다시 숨김
+//       stream = null;
+
+//       alert("학습 종료! (웹캠/마이크 OFF)");
+//     });
+//     // ==============================
+// // ✅ Chart.js 그래프 생성
+// // ==============================
+const ctx = document.getElementById("focusChart");
+
+if (ctx) {
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["MON","TUE", "WEN", "THU", "FRI", "SAT", "SUN"],
+      datasets: [{
+        data: [20, 20, 20, 60, 70, 50, 62],
+        borderRadius: 20,
+        barThickness: 10,
+
+         // ✅ 막대 색상 (초록/민트)
+        backgroundColor: "#33D6A6",
+
+        // ✅ 둥글게
+        borderRadius: 20,
+
+        // ✅ 막대 두께
+        barThickness: 10
+      }]
+    },
+
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: {
+            color: "#8E8E8E",
+            font: { size: 10 }
+          }
+        },
+        y: {
+          min: 0,
+          max: 100,
+          ticks: {
+            stepSize: 50,
+            color: "#8E8E8E",
+            font: { size: 10 }
+          },
+          grid: {
+            borderDash: [6, 6],
+            color: "#D9D9D9"
+          }
+        }
+      }
+    }
+  });
+}
+// ==============================
+// ✅ 월별 집중도 막대 그래프
+// ==============================
+const monthCtx = document.getElementById("monthChart");
+
+if (monthCtx) {
+  new Chart(monthCtx, {
+    type: "bar",
+    data: {
+      labels: ["MON","TUE", "WEN", "THU", "FRI", "SAT", "SUN"],
+      datasets: [{
+        data: [10, 20, 15, 60, 70, 50, 62, 25, 90, 82, 88, 40],
+        borderRadius: 20,
+        barThickness: 10,
+
+         // ✅ 막대 색상 (초록/민트)
+        backgroundColor: "#33D6A6",
+
+        // ✅ 둥글게
+        borderRadius: 20,
+
+        // ✅ 막대 두께
+        barThickness: 10
+      }]
+    },
+
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: {
+            color: "#8E8E8E",
+            font: { size: 10 }
+          }
+        },
+        y: {
+          min: 0,
+          max: 100,
+          ticks: {
+            stepSize: 50,
+            color: "#8E8E8E",
+            font: { size: 10 }
+          },
+          grid: {
+            borderDash: [6, 6],
+            color: "#D9D9D9"
+          }
+        }
+      }
+    }
+  });
+}
+
+  });
+
+</script>
+
+  </body>
+</html>
+

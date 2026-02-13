@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../sidebar/style.css">
+  </head>
+  <body>
+    <div id="overlay" class="overlay"></div>
+    <aside id="sidebar" class="sidebar">
+  <div class="frame">
+
+    <!-- 유저 영역 -->
+    <div class="div">
+      
+      <div class="div-2">
+        
+      
+      </div>
+    </div>
+
+    <div class="top-items-wrapper">
+  <div class="top-items">
+
+    <a href="../license/license.html" class="nav-link">
+      <div class="menu-row">
+        <img class="menu-icon" src="../sidebar/img/VectorDaily.svg" />
+        <div class="menu-text">자격증 등록</div>
+      </div>
+    </a>
+
+    <a href="../data/data.html" class="nav-link">
+      <div class="menu-row">
+        <img class="menu-icon" src="../sidebar/img/VectorData.svg" />
+        <div class="menu-text">DATA</div>
+      </div>
+    </a>
+
+    <a href="../diary/diary.html" class="nav-link">
+      <div class="menu-row">
+        <img class="menu-icon" src="../sidebar/img/VectorW.svg" />
+        <div class="menu-text">일지 / 일기 기록 관리</div>
+      </div>
+    </a>
+
+    <a href="../profile/profile.html" class="nav-link">
+      <div class="menu-row">
+        <img class="menu-icon" src="../sidebar/img/VectorProfile.svg" />
+        <div class="menu-text">마이페이지</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+      
+
+    <!-- 아래 메뉴 -->
+    <div class="bottom">
+      <div class="bottom-icons">
+
+        <a href="../settings/settings.html" class="nav-link">
+          <div class="nav-text-item">
+            <div class="content">
+              <div class="vector-wrapper">
+                <img class="vector" src="../sidebar/img/Settings.svg" />
+              </div>
+              <div class="label">Settings</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="../login/login.html" class="nav-link" id="logoutBtn">
+          <div class="nav-text-item">
+            <div class="content">
+              <div class="vector-wrapper">
+                <img class="img" src="../sidebar/img/logout.svg" />
+              </div>
+              <div class="label">Logout</div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- 라인/이미지 -->
+    <img class="line" src="../sidebar/img/Line6.svg" />
+    <img class="line-2" src="../sidebar/img/Line7.svg" />
+  
+
+  </div>
+</aside>
+
+    <div class="main">
+      <div class="group">
+        <div class="ellipse"></div>
+        <div class="div"></div>
+        <div class="ellipse-2"></div>
+        <div class="ellipse-3"></div>
+        <div class="ellipse-4"></div>
+        <div class="ellipse-5"></div>
+      </div>
+      <div class="div-wrapper"><div class="hello" id="helloText">OO님 안녕하세요!</div></div>
+      <img class="vuesax-bold" src="img/notification.svg" />
+      <div class="frame-5">
+        <div class="rectangle"></div>
+        <div class="text-wrapper-11">집중도</div>
+        <img class="rectangle-2" src="img/Rectangle1037.svg" />
+        <div class="text-wrapper-12">View</div>        
+        <div class="text-wrapper-13" style="font-size: 2rem;top:3050px;left:250px">-</div>
+      </div>
+      <div class="frame-2">
+        <div class="rectangle"></div>
+        <div class="text-wrapper-2">스트레스 지수</div>
+        <img class="rectangle-2" src="img/Rectangle1037.svg" />
+        <div class="text-wrapper-3">View</div>
+        <div class="text-wrapper-4" style="font-size: 2rem;top:3050px;left:250px">-</div>
+      </div>
+
+      <div class="frame-3 chart-month-wrap">
+        <canvas id="monthChart" height="200"></canvas>
+      </div>
+      <img class="line" src="img/Line28.svg" />
+      <div class="frame-4 chart-month-wrap">               
+        <canvas id="focusChart" height="200"></canvas>
+      </div>
+      <div class="vuesax-bold-user-wrapper"></div>
+      <div class="group-3">
+        <img id="menuBtn" class="icon-menu-2" src="img/icon_menu.png" /> 
+    </div>
+    </div>
+     
+
+     <!-- 하단 네비게이션 -->
+  <div class="bottom-bar">
+    <nav class="bottom-nav">
+      <a href="../data/data.html" class="nav-item">
+        <img src="img/Group.png" alt="daily" />
+      </a>
+
+      <a href="../license/license.html" class="nav-item">
+        <img src="img/calendar.png" alt="data" />
+      </a>
+
+      <a href="main.html" class="nav-item active">
+        <img src="img/home.png" alt="home" />
+      </a>
+
+      <a href="../diary/diary.html" class="nav-item">
+        <img src="img/document-text.png" alt="diary" />
+      </a>
+
+      <a href="../profile/profile.html" class="nav-item">
+        <img src="img/profile-2user.png" alt="profile" />
+      </a>
+    </nav>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+let focusChartInstance = null;
+let stressChartInstance = null;
+
+/* =========================
+   날짜 → 요일
+========================= */
+function toWeekday(dateString) {
+  const days = ['일', '월', '화', '수', '목', '금', '토'];
+  const date = new Date(dateString); // ← 핵심
+  if (isNaN(date)) return '';
+  return days[date.getDay()];
+}
+
+/* =========================
+   마지막 유효 숫자
+========================= */
+function lastValidNumber(arr) {
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (arr[i] !== null && arr[i] !== undefined) {
+      return Number(arr[i]);
+    }
+  }
+  return 0;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("🔥 main.html JS 실행됨");
+
+  const userNo = localStorage.getItem("user_no");
+  if (!userNo) {
+    alert("로그인이 필요합니다");
+    location.href = "../login/login.html";
+    return;
+  }
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const menuBtn = document.getElementById("menuBtn");
+    const startBtn = document.getElementById("startBtn");
+    const stopBtn = document.getElementById("stopBtn");
+    const webcam = document.getElementById("webcam");
+
+    if (!sidebar || !overlay || !menuBtn) {
+      console.log("❌ 연결 실패", { sidebar, overlay, menuBtn });
+      return;
+    }
+
+    // ==============================
+    // 사이드바 열기/닫기
+    // ==============================
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.add("active");
+      overlay.classList.add("active");
+    });
+
+    overlay.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+
+
+  fetch(`http://192.168.219.128:4000/api/dashboard/${userNo}`)
+    .then(res => res.json())
+    .then(data => {
+      console.log("📦 API 응답:", data);
+
+      if (data.status !== "success") return;
+
+      document.getElementById("helloText").innerText =
+        `${data.name}님 안녕하세요!`;
+
+      const reports = data.reports;
+      if (!reports || reports.length === 0) return;
+
+      const labels = reports.map(r => toWeekday(r.report_date));
+      const focusData = reports.map(r => r.avg_focus_score ?? 0);
+      const stressData = reports.map(r => r.avg_stress_score ?? 0);
+
+      console.log("📊 focusData:", focusData);
+      console.log("📊 stressData:", stressData);
+      console.log("📊 labels:", labels);
+
+      const todayFocus = Math.round(lastValidNumber(focusData));
+      const todayStress = Math.round(lastValidNumber(stressData));
+
+      document.querySelector(".text-wrapper-13").innerText = `${todayFocus}%`;
+      document.querySelector(".text-wrapper-4").innerText = `${todayStress}%`;
+
+      drawBarChart(
+        "monthChart",
+        labels,
+        focusData,
+        "#33D6A6",
+        c => focusChartInstance = c
+      );
+
+      drawBarChart(
+        "focusChart",
+        labels,
+        stressData,
+        "#FF8A8A",
+        c => stressChartInstance = c
+      );
+    });
+});
+
+/* =========================
+   공통 차트 함수
+========================= */
+function drawBarChart(canvasId, labels, data, color, setInstance) {
+  const ctx = document.getElementById(canvasId);
+  if (!ctx) {
+    console.error("❌ canvas 없음:", canvasId);
+    return;
+  }
+
+  const chart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [{
+        data,
+        backgroundColor: color,
+        borderRadius: 12,
+        barThickness: 12
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { min: 0, max: 100, ticks: { stepSize: 50 } }
+      }
+    }
+  });
+
+  setInstance(chart);
+}
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="frame">
+      <div class="div">
+        <div class="sidebar-user">
+          <div id="sidebarName">Username</div>
+        <div class="div-2">
+          <div  id="sidebarEmail">email</div>
+          <img class="arrow-drop-down" src="img/Vector.svg" />
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="bottom-icons">
+          <div class="nav-text-item"></div>
+          <div class="nav-text-item"></div>
+          <div class="nav-text-item">
+            <a href="../settings/settings.html" class="nav-link">
+            <div class="nav-text-item">
+              <div class="content">
+                <div class="vector-wrapper"><img class="vector" src="img/Settings.svg" /></div>
+                <div class="label">Settings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+          <a href="#" id="logoutBtn" class="nav-link">
+            <div class="nav-text-item">
+              <div class="content">
+                <div class="vector-wrapper"><img class="img" src="img/logout.svg" /></div>
+                <div class="label">Logout</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+     <div class="top-items-wrapper">
+  <div class="top-items">
+
+    <!-- Daily -->
+    <a href="../daily/daily.html" class="nav-link">
+      <div class="content-2" style="top:0px;">
+        <div style="position:absolute; top:12px; left:49px;" class="text-wrapper-3">Daily 집중 리포트</div>
+        <img class="chat-line" src="img/VectorDaily.svg" />
+      </div>
+    </a>
+
+    <!-- DATA -->
+    <a href="../data/data.html" class="nav-link">
+      <div class="content-2" style="top:56px;">
+        <div style="position:absolute; top:12px; left:49px;" class="text-wrapper-3">DATA</div>
+        <img class="chat-line" src="img/VectorData.svg" />
+      </div>
+    </a>
+
+    
+
+    <!-- 일지 -->
+    <a href="../diary/diary.html" class="nav-link">
+      <div class="content-2" style="top:168px;">
+        <p class="p">일지 / 일기 기록 관리</p>
+        <img class="todo-line" src="img/VectorW.svg" />
+      </div>
+    </a>
+
+    <!-- 마이페이지 -->
+    <a href="../mypage/mypage.html" class="nav-link">
+      <div class="content-2" style="top:224px;">
+        <div class="text-wrapper-20">마이페이지</div>
+        <img class="vector-2" src="img/VectorProfile.svg" />
+      </div>
+    </a>
+
+  </div>
+</div>
+
+      <img class="line" src="img/Line6.svg" />
+      <img class="line-2" src="img/Line7.svg" />
+      <img class="dp" src="img/dp.svg" />
+    </div>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+          const username = localStorage.getItem("username");
+          const email = localStorage.getItem("email");
+
+          // 메인 인사말
+          const helloText = document.getElementById("helloText");
+          if (helloText && username) {
+            helloText.textContent = `${username}님 안녕하세요!`;
+          }
+
+          // 사이드바 이름
+          const sidebarName = document.getElementById("sidebarName");
+          if (sidebarName && username) {
+            sidebarName.textContent = username;
+          }
+
+          // 사이드바 이메일
+          const sidebarEmail = document.getElementById("sidebarEmail");
+          if (sidebarEmail && email) {
+            sidebarEmail.textContent = email;
+          }
+        });
+
+        
+          
+          document.getElementById("logoutBtn").addEventListener("click", () => {
+          localStorage.removeItem("username");
+          localStorage.removeItem("email");
+          window.location.href = "../login/login.html";
+        });
+
+            
+    </script>
+  </body>
+</html>

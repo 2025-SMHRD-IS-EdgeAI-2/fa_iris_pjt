@@ -1,0 +1,17 @@
+:root {
+  --black: rgba(26, 26, 26, 1);
+  --gray-100: rgba(102, 102, 102, 1);
+  --primary-gray: rgba(50, 64, 84, 1);
+  --android-h6-font-family: "Balsamiq Sans", Helvetica;
+  --android-h6-font-weight: 400;
+  --android-h6-font-size: 20px;
+  --android-h6-letter-spacing: 0px;
+  --android-h6-line-height: 24px;
+  --android-h6-font-style: normal;
+  --android-subtitle-2-font-family: "Balsamiq Sans", Helvetica;
+  --android-subtitle-2-font-weight: 400;
+  --android-subtitle-2-font-size: 14px;
+  --android-subtitle-2-letter-spacing: 0px;
+  --android-subtitle-2-line-height: 24px;
+  --android-subtitle-2-font-style: normal;
+}

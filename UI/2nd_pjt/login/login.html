@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="screen">
+      <div class="group">
+        <div class="ellipse"></div>
+        <div class="div"></div>
+        <div class="ellipse-2"></div>
+        <div class="ellipse-3"></div>
+        <div class="ellipse-4"></div>
+        <div class="ellipse-5"></div>
+      </div>
+      <div class="frame"><div class="text-wrapper">Login</div></div>
+      <div class="frame-2">
+        <div class="text-field">
+          <div class="state-layer-wrapper">
+            <div class="state-layer">
+              <div class="content">
+                <input
+                    type="text"
+                    id="userID"
+                    class="input-real"
+                    placeholder="ID"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-field">
+          <div class="state-layer-wrapper">
+            <div class="state-layer-2">
+              <div class="content">
+                <input
+                    type="password"
+                    id="userPw"
+                    class="input-real"
+                    placeholder="Password"
+                />    
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="frame-3"> 
+        <button id="loginBtn" class="button">
+          <div class="button-2">Login</div>
+        </button>
+            
+         
+        <p class="p">
+          <span class="span">계정이 없으신가요?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <a href="../signup/signup.html" style="text-decoration: none;">
+          <span class="text-wrapper-2">회원가입</span>
+          </a>
+        </p>
+        <div class="frame-4">
+          <div class="rectangle"></div>
+          <div class="text-wrapper-3">Or login with</div>
+          <div class="rectangle"></div>
+        </div>
+      </div>
+      <img class="img" src="img/frame_228.png" />
+    </div>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const loginBtn = document.getElementById("loginBtn");
+        const userId = document.getElementById("userID");
+        const userPw = document.getElementById("userPw");
+
+        loginBtn.addEventListener("click", async (e) => {
+          e.preventDefault();
+
+          const idVal = userId.value.trim();
+          const pwVal = userPw.value.trim();
+
+          if (!idVal || !pwVal) {
+            alert("ID와 Password를 입력해주세요!");
+            return;
+          }
+
+          try {
+            const res = await fetch("http://192.168.219.128:4000/api/login", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                login_id: idVal,
+                user_pwd: pwVal
+              })
+            });
+
+            const data = await res.json();
+            console.log("📦 로그인 응답:", data);
+
+            if (data.user_no) {
+              localStorage.setItem("user_no", data.user_no);
+              alert("로그인 성공!");
+              location.href = "../main/main.html";
+            } else {
+              alert(data.msg || "로그인 실패");
+            }
+
+          } catch (err) {
+            console.error("❌ 로그인 에러:", err);
+            alert("서버 연결 실패! app.js 실행중인지 확인하세요.");
+          }
+        });
+      });
+    </script>
+
+  </body>
+</html>

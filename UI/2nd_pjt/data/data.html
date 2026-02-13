@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>DATA</title>
+
+  <!-- 기존 Figma 스타일 -->
+  <link rel="stylesheet" href="globals.css" />
+  <link rel="stylesheet" href="styleguide.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- swipe 전용 -->
+  <link rel="stylesheet" href="swipe.css" />
+</head>
+
+<body>
+  <div class="DATA">
+
+    <!-- 배경 -->
+    <div class="group">
+      <div class="ellipse"></div>
+      <div class="div"></div>
+      <div class="ellipse-2"></div>
+      <div class="ellipse-3"></div>
+      <div class="ellipse-4"></div>
+      <div class="ellipse-5"></div>
+    </div>
+
+    <!-- ✅ 날짜 스와이프 영역 (여기만 스와이프) -->
+    <div id="date-swipe">
+      <div class="rectangle"></div>
+      <div class="rectangle-2"></div>
+      <div class="group-2"></div>
+
+      <div class="group-3">
+        <div class="rectangle-3"></div>
+        <div class="text-wrapper">Feb</div>
+      </div>
+
+      <div class="group-4">
+        <div class="rectangle-3"></div>
+        <div class="text-wrapper-2">Feb</div>
+      </div>
+
+      <div class="text-wrapper-3" id="monthText">Feb</div>
+      <div class="text-wrapper-4">Feb</div>
+      <div class="text-wrapper-5">Feb</div>
+      <div class="text-wrapper-10" id="dayName-2">Wen</div>
+      <div class="text-wrapper-9"  id="dayName-1">Thr</div>
+      <div class="text-wrapper-6"  id="dayName-0">Fri</div>
+      <div class="text-wrapper-7"  id="dayName-1p">Sat</div>
+      <div class="text-wrapper-8"  id="dayName-2p">Sun</div>
+
+      <div class="text-wrapper-15" id="dayNum-2">11</div>
+      <div class="text-wrapper-14" id="dayNum-1">12</div>
+      <div class="text-wrapper-11" id="dayNum-0">13</div>
+      <div class="text-wrapper-12" id="dayNum-1p">14</div>
+      <div class="text-wrapper-13" id="dayNum-2p">15</div>
+    </div>
+
+    <!-- 나머지 UI 그대로 -->
+    <div class="rectangle-4"></div>
+
+    <a href="../calendar/calendar.html" class="calendar-link">
+      <div class="group-5"></div>
+      <div class="text-wrapper-16">DATA</div>
+      <img class="img" src="img/Group6.png" />
+    </a>
+
+    <div class="text-wrapper-17">총 학습 시간</div>
+    <img class="image" src="img/image1454.png" />
+    <img class="line" src="img/Line2.png" />
+    <div class="text-wrapper-18" id="studyTime">-</div>
+
+    <div class="text-wrapper-21">평균 집중도 점수</div>
+    <img class="line-3" src="img/Line35.png" />
+    <div class="text-wrapper-24">평균 스트레스 지수 점수</div>
+
+    <div class="text-wrapper-25" id="stressScore">-</div>
+    <div class="text-wrapper-26" id="focusScore">-</div>
+
+    <img class="line-4" src="img/Line4.png" />
+
+    <div class="group-8">
+      <div class="text-wrapper-22">피드백</div>
+      <p class="text-wrapper-23" id="feedbackText">-</p>
+      <div class="ellipse-6"></div>
+    </div>
+
+    <div class="group-11">
+      <div class="text-wrapper-31">학습일지</div>
+      <p class="text-wrapper-32" id="diaryText">-</p>
+      <div class="ellipse-8"></div>
+    </div>
+
+    <!-- 하단 바 -->
+    <div class="bottom-bar">
+      <nav class="bottom-nav">
+        <a href="../data/data.html" class="nav-item"><img src="img/bar-chart-box-fill.png"></a>
+        <a href="../license/license.html" class="nav-item"><img src="img/calendar.png"></a>
+        <a href="../main/main.html" class="nav-item"><img src="img/home.png"></a>
+        <a href="../diary/diary.html" class="nav-item"><img src="img/document-text.png"></a>
+        <a href="../profile/profile.html" class="nav-item"><img src="img/profile-2user.png"></a>
+      </nav>
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script src="data.js"></script>
+  <script src="swipe.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="frame">
+      <div class="group">
+        <div class="ellipse"></div>
+        <div class="div"></div>
+        <div class="ellipse-2"></div>
+        <div class="ellipse-3"></div>
+        <div class="ellipse-4"></div>
+        <div class="ellipse-5"></div>
+      </div>
+      <div class="group-2"></div>
+      <div class="date-picker">
+        <div class="div-2">
+          <div class="select-date">SELECT DATE</div>
+          <div class="div-3">
+            <div id="selectedDateText" class="mon-nov">Feb, --</div>
+            
+          </div>
+        </div>
+        <div class="div-4">
+          <div class="div-5">
+            <div class="div-6">
+              <div class="november">February 2026</div>
+              <div class="vector-wrapper" id="prevMonth"><img class="img" src="img/Vector.png" /></div>
+            </div>
+            <div class="div-7">
+              <div class="vector-wrapper" id="nextMonth"><img class="img" src="img/Vector1.png" /></div>
+              
+            </div>
+          </div>
+          <div class="div-8">
+              
+        </div>
+          <div class="div-9">
+            <button class="button-small">
+              <button class="button-wrapper"><div class="button">CANCEL</div></button>
+              <div class="min-width"></div>
+            </button>
+            <div class="button-small-2">
+              <a href="../data/data.html" class="button-small-2">
+                <div class="button-wrapper-2">
+                  <div class="button-2">OK</div>
+                </div>
+                <div class="min-width"></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="group-3">
+        <div class="group-wrapper"><img class="group-3" src="img/menu.png" /></div>
+      </div>
+      <div class="group-4">
+        <a href="javascript:history.back();" class="back-link">
+        <div class="iconly-bold-arrow">
+          <div class="arrow-left-wrapper"><div class="arrow-left"></div>
+          <img class="arrow-left-wrapper" src="img/ArrowLeft.png" />
+        </div>
+        </div>
+        </a>
+        <div class="text-wrapper-13">DATA</div>
+        
+        
+      </div>
+    </div>
+  <script>
+        const title = document.querySelector(".mon-nov");
+        const monthText = document.querySelector(".november");
+        const calendar = document.querySelector(".div-8");
+
+        const prevBtn = document.getElementById("prevMonth");
+        const nextBtn = document.getElementById("nextMonth");
+
+        // base(초록 원)
+        const base = document.createElement("div");
+        base.classList.add("base");
+
+        // 현재 보고있는 달 (초기값: 2026년 2월)
+        let currentYear = 2026;
+        let currentMonth = 1; // 0=Jan, 1=Feb
+
+        // 선택된 날짜
+        let selectedDay = null;
+
+        // 요일 헤더
+        const weekHeaderHTML = `
+          <div class="row">
+            <div class="bounding-box"><div class="text-wrapper">S</div></div>
+            <div class="bounding-box"><div class="text-wrapper-2">M</div></div>
+            <div class="bounding-box"><div class="text-wrapper">T</div></div>
+            <div class="bounding-box"><div class="text-wrapper-2">W</div></div>
+            <div class="bounding-box"><div class="text-wrapper">T</div></div>
+            <div class="bounding-box"><div class="text-wrapper">F</div></div>
+            <div class="div-wrapper"><div class="text-wrapper">S</div></div>
+          </div>
+        `;
+
+        function daysInMonth(year, month) {
+          return new Date(year, month + 1, 0).getDate();
+        }
+
+        function firstDayOfMonth(year, month) {
+          return new Date(year, month, 1).getDay(); // 0=Sun
+        }
+
+        function renderCalendar(year, month) {
+          // 월 텍스트 변경
+          const monthNames = [
+            "January","February","March","April","May","June",
+            "July","August","September","October","November","December"
+          ];
+          monthText.innerText = `${monthNames[month]} ${year}`;
+
+          // 달력 비우고 요일 넣기
+          calendar.innerHTML = weekHeaderHTML;
+
+          const startDay = firstDayOfMonth(year, month);
+          const totalDays = daysInMonth(year, month);
+
+          let day = 1;
+
+          // 6주까지 만들기
+          for (let week = 0; week < 6; week++) {
+            const row = document.createElement("div");
+            row.className = "row";
+
+            for (let i = 0; i < 7; i++) {
+              const cell = document.createElement("div");
+
+              // 토요일은 너가 div-wrapper 쓰는 구조라서 유지
+              if (i === 6) cell.className = "div-wrapper";
+              else cell.className = "bounding-box";
+
+              // 빈칸 처리
+              if (week === 0 && i < startDay) {
+                cell.innerHTML = `<div class="text"></div>`;
+              } else if (day > totalDays) {
+                cell.innerHTML = `<div class="text"></div>`;
+              } else {
+                cell.classList.add("day");
+                cell.dataset.day = day;
+
+                // 숫자 넣기 (기존 스타일 wrapper들 중 하나로 통일)
+                cell.innerHTML = `<div class="text-wrapper-11">${day}</div>`;
+
+                // 클릭 이벤트
+                cell.addEventListener("click", () => {
+                  cell.prepend(base);
+
+                  const clickedDay = Number(cell.dataset.day);
+                  selectedDay = clickedDay;
+
+                  // YYYY-MM-DD 형태
+                  const mm = String(currentMonth + 1).padStart(2, "0");
+                  const dd = String(clickedDay).padStart(2, "0");
+                  const dateStr = `${currentYear}-${mm}-${dd}`;
+
+                  localStorage.setItem("selected_date", dateStr);
+
+                  // 🔥 핵심
+                  localStorage.setItem("selected_date", dateStr);
+
+                  title.innerText = `${monthNames[month].slice(0,3)}, ${clickedDay}`;
+                });
+
+                day++;
+              }
+
+              row.appendChild(cell);
+            }
+
+            calendar.appendChild(row);
+
+            // 다 채웠으면 종료
+            if (day > totalDays) break;
+          }
+        }
+
+        // 이전달
+        prevBtn.addEventListener("click", () => {
+          currentMonth--;
+          if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+          }
+          selectedDay = null;
+          title.innerText = `${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][currentMonth]}, --`;
+          renderCalendar(currentYear, currentMonth);
+        });
+
+        // 다음달
+        nextBtn.addEventListener("click", () => {
+          currentMonth++;
+          if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+          }
+          selectedDay = null;
+          title.innerText= `${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][currentMonth]}, --`;
+          renderCalendar(currentYear, currentMonth);
+        });
+
+        // 최초 렌더링
+        title.innerText = "Feb, --";
+        renderCalendar(currentYear, currentMonth);
+      </script>
+
+
+
+
+  </body>
+</html>
+

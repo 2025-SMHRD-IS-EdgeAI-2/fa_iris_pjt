@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="./globals.css" />
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <div class="screen">
+            <div class="group">
+                <div class="ellipse"></div>
+                <div class="div"></div>
+                <div class="ellipse-2"></div>
+                <div class="ellipse-3"></div>
+                <div class="ellipse-4"></div>
+                <div class="ellipse-5"></div>
+            </div>
+            <div class="text-wrapper">
+                <p class="line">당신의 시선을 읽어, 집중을 분석합니다.</p>
+                <p class="line">눈과 표정 데이터 기반 실시간 집중도 분석</p>
+                <p class="line">지금, 제대로 집중하고 있을까요?</p>
+                <p class="line">공부할 때의 나, 데이터로 확인하세요.</p>
+            </div>
+
+            <button class="next-btn" id="nextBtn">NEXT</button>
+            <img class="element" src="img/2.png" />
+
+        </div>
+    </body>
+    <script>
+        document.getElementById("nextBtn").addEventListener("click", () => {
+            window.location.href = "../onboarding/index.html";
+        });
+    </script>
+ 
+</html>

@@ -1,0 +1,299 @@
+.screen {
+    display: flex;
+    height: 844px;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    background-color: #ffffff;
+    overflow: hidden;
+    width: 100%;
+    min-width: 390px;
+}
+
+.screen .group {
+    position: relative;
+    width: 451px;
+    height: 839px;
+    margin-top: -13.5px;
+    margin-bottom: -13.5px;
+    opacity: 0.8;
+}
+
+.screen .ellipse {
+    position: absolute;
+    top: 246px;
+    left: 362px;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    filter: blur(75px);
+    background: linear-gradient(180deg, rgba(124, 70, 240, 1) 0%, rgba(124, 70, 240, 0.15) 100%);
+}
+
+.screen .div {
+    position: absolute;
+    top: 554px;
+    left: 0;
+    width: 96px;
+    height: 96px;
+    border-radius: 48px;
+    filter: blur(75px);
+    background: linear-gradient(180deg, rgba(70, 189, 240, 1) 0%, rgba(70, 179, 240, 0.15) 100%);
+}
+
+.screen .ellipse-2 {
+    position: absolute;
+    top: 224px;
+    left: 101px;
+    width: 74px;
+    height: 74px;
+    border-radius: 37px;
+    filter: blur(75px);
+    background: linear-gradient(180deg, rgba(95, 39, 255, 1) 0%, rgba(202, 184, 255, 1) 100%);
+}
+
+.screen .ellipse-3 {
+    position: absolute;
+    top: 781px;
+    left: 269px;
+    width: 58px;
+    height: 58px;
+    border-radius: 29px;
+    filter: blur(65px);
+    background: linear-gradient(180deg, rgba(240, 182, 70, 1) 0%, rgba(240, 203, 70, 0.15) 100%);
+}
+
+.screen .ellipse-4 {
+    position: absolute;
+    top: 0;
+    left: 13px;
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    filter: blur(75px);
+    background: linear-gradient(180deg, rgba(70, 240, 128, 1) 0%, rgba(70, 240, 138, 0.15) 100%);
+}
+
+.screen .ellipse-5 {
+    position: absolute;
+    top: 345px;
+    left: 333px;
+    width: 118px;
+    height: 118px;
+    border-radius: 59px;
+    filter: blur(75px);
+    background: linear-gradient(180deg, rgba(237, 240, 70, 1) 0%, rgba(240, 233, 70, 0.15) 100%);
+}
+
+.screen .group-2 {
+    position: absolute;
+    top: 120px;
+    left: 60px;
+    width: 300px;
+    height: 400px;
+}
+
+.screen .female-sitting-on {
+    position: absolute;
+    top: 78px;
+    left: 64px;
+    width: 159px;
+    height: 184px;
+}
+
+.screen .vase-with-tulips {
+    position: absolute;
+    top: 210px;
+    left: 12px;
+    width: 36px;
+    height: 52px;
+}
+
+.screen .blue-stopwatch-with {
+    position: absolute;
+    top: 0;
+    left: 37px;
+    width: 40px;
+    height: 50px;
+}
+
+.screen .multicolored {
+    position: absolute;
+    top: 156px;
+    left: 178px;
+    width: 62px;
+    height: 42px;
+}
+
+.screen .pie-chart {
+    position: absolute;
+    top: 111px;
+    left: 17px;
+    width: 26px;
+    height: 26px;
+}
+
+.screen .close-up-of-pink {
+    position: absolute;
+    top: 241px;
+    left: 0;
+    width: 18px;
+    height: 22px;
+}
+
+.screen .blue-desk-calendar {
+    position: absolute;
+    top: 67px;
+    left: 209px;
+    width: 36px;
+    height: 33px;
+}
+
+.screen .ellipse-6 {
+    position: absolute;
+    top: 4px;
+    left: 185px;
+    width: 8px;
+    height: 8px;
+    background-color: #91deff;
+    border-radius: 4px;
+}
+
+.screen .ellipse-7 {
+    position: absolute;
+    top: 23px;
+    left: 135px;
+    width: 4px;
+    height: 4px;
+    background-color: #bd9fff;
+    border-radius: 2px;
+}
+
+.screen .ellipse-8 {
+    position: absolute;
+    top: 281px;
+    left: 43px;
+    width: 8px;
+    height: 8px;
+    background-color: #ffd6e3;
+    border-radius: 4px;
+}
+
+.screen .ellipse-9 {
+    position: absolute;
+    top: 295px;
+    left: 81px;
+    width: 4px;
+    height: 4px;
+    background-color: #a3e6f8;
+    border-radius: 2px;
+}
+
+.screen .ellipse-10 {
+    position: absolute;
+    top: 274px;
+    left: 172px;
+    width: 8px;
+    height: 8px;
+    background-color: #e9ec2a;
+    border-radius: 4px;
+}
+
+.screen .ellipse-11 {
+    position: absolute;
+    top: 252px;
+    left: 202px;
+    width: 4px;
+    height: 4px;
+    background-color: #7efba9;
+    border-radius: 2px;
+}
+
+.screen .text-wrapper {
+    position: absolute;
+    top: 480px;
+    left: 48px;
+    -webkit-text-stroke: 5px #40c6a0;
+    font-family: "Pacifico-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 64px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.screen .text-wrapper-2 {
+    position: absolute;
+    top: 582px;
+    left: 261px;
+    -webkit-text-stroke: 3px #40c6a0;
+    font-family: "Hind Vadodara-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.screen .frame {
+    display: flex;
+    width: 106px;
+    height: 29px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 2px 26px;
+    position: absolute;
+    top: 739px;
+    left: 234px;
+    background-color: #5aedc4;
+    border-radius: 8px;
+}
+
+.screen .text-wrapper-3 {
+    position: relative;
+    width: fit-content;
+    margin-top: -0.5px;
+    margin-left: -2.5px;
+    margin-right: -2.5px;
+    font-family: "Lexend Deca-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 19px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.start-btn {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 14px 32px;
+  background-color: #5ee4b5;
+  color: white;
+
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+  z-index: 9999; /* 🔥 제일 중요 */
+}
+
+.screen {
+  position: relative;
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="screen">
+      <div class="group">
+        <div class="ellipse"></div>
+        <div class="div"></div>
+        <div class="ellipse-2"></div>
+        <div class="ellipse-3"></div>
+        <div class="ellipse-4"></div>
+        <div class="ellipse-5"></div>
+      </div>
+      <div class="group-2">
+        <a href="javascript:history.back();" class="back-link">
+        <div class="iconly-bold-arrow">
+          <div class="arrow-left-wrapper"><div class="arrow-left"></div></div>
+          <img class="arrow-left-wrapper" src="img/ArrowLeft.png" />
+        </div>
+        </a>
+        <p class="text-wrapper">일기 / 일지 기록 관리</p>
+        
+        
+      </div>
+      <div class="group-3">
+        <p class="p">오늘 집중을 얼만큼 한거같은지 평가해보세요!</p>
+        <div class="text-wrapper-2">오늘의 집중 점수</div>
+        <div class="frame">
+          <img class="star" src="img/Star5.png" onclick="setScore(1)" id="star1" />
+          <img class="star" src="img/Star4.png" onclick="setScore(2)" id="star2"/>
+          <img class="star" src="img/Star3.png" onclick="setScore(3)" id="star3"/>
+          <img class="star" src="img/Star1.png" onclick="setScore(4)" id="star4"/>
+          <img class="star" src="img/Star1.png" onclick="setScore(5)" id="star5"/>
+        </div>
+      </div>
+      <div class="group-4">
+        
+        <div class="text-wrapper-4">학습 일지</div>
+        <div class="text-wrapper-5">여기에 작성하시오.</div>
+        <textarea id="diary"
+          class="diary-input"
+          maxlength="300"
+          placeholder="여기에 작성하시오."
+          ></textarea>
+        
+        <div class="text-wrapper-3">0/300</div>
+        <img class="line" src="img/Line1.svg" />
+      </div>
+      <div class="group-5" onclick="saveDiary()" style="cursor: pointer;">
+        <img class="img" src="img/Rectangle1037.png" />
+        <div class="text-wrapper-6">저장</div>
+      </div>
+      <div class="group-6">
+        <div class="frame-2">
+          <div class="calendar-day"><img class="union" src="img/union-1.png" /></div>
+          <div class="text-wrapper-7" id="dateText">26.01.01</div>
+          <img class="line-2" src="img/line-5.svg" />
+          <img class="vector" src="img/Vector_1.png" />
+        <input type="date" id="datePicker" class="date-picker-hidden"/>
+        </div>
+        <div class="text-wrapper-8">일자</div>
+        
+      </div>
+      <div class="bottom-bar">
+        <nav class="bottom-nav">
+          <a href="../data/data.html" class="nav-item"><img src="img/bar-chart-box-fill.png"></a>
+          <a href="../license/license.html" class="nav-item"><img src="img/calendar.png"></a>
+          <a href="../main/main.html" class="nav-item"><img src="img/home.png"></a>
+          <a href="../diary/diary.html" class="nav-item"><img src="img/document-text.png"></a>
+          <a href="../profile/profile.html" class="nav-item"><img src="img/profile-2user.png"></a>
+        </nav>
+      </div>
+    </div>
+     <script>
+      let score = 0;    
+        function saveDiary() {
+          const userNo = localStorage.getItem("user_no");
+          const content = document.getElementById("diary").value.trim();
+          const dateValue = document.getElementById("datePicker").value;
+
+          if (!userNo) {
+            alert("로그인이 필요합니다.");
+            location.href = "../login/login.html";
+            return;
+          }
+
+          if (!dateValue) {
+            alert("날짜를 선택해주세요.");
+            return;
+          }
+
+          if (score === 0) {
+            alert("별점을 선택해주세요.");
+            return;
+          }
+
+          if (!content) {
+            alert("일기 내용을 입력해주세요.");
+            return;
+          }
+
+          const body = {
+            user_no: userNo,
+            report_date: dateValue, // YYYY-MM-DD
+            star_rating: score,
+            content: content
+          };
+
+          fetch("http://192.168.219.128:4000/api/daily_report", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+          })
+          .then(res => res.json())
+          .then(data => {
+            if (data.status === "success") {
+              alert("일기가 저장되었습니다 ✅");
+              location.href = "../main/main.html";
+            } else {
+              alert("저장 실패 ❌");
+            }
+          })
+          .catch(err => {
+            console.error(err);
+            alert("서버 오류");
+          });
+        }
+        function setScore(n){
+          score = n;
+
+        for(let i=1; i<=5; i++){
+            const star = document.getElementById("star" + i);
+
+        if(i <= n){
+            star.src = "img/Star5.png";   // ⭐ 채워진 별 (초록)
+        }else{
+            star.src = "img/Star1.png";   // ☆ 빈 별
+        }
+      }
+    }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const picker = document.getElementById("datePicker");
+
+        picker.addEventListener("change", changeDateText);
+      });
+
+      function changeDateText() {
+        const picker = document.getElementById("datePicker");
+        const text = document.getElementById("dateText");
+
+        if (!picker.value) return;
+
+        const [yyyy, mm, dd] = picker.value.split("-");
+        text.innerText = `${yyyy.slice(2)}.${mm}.${dd}`;
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        const diary = document.getElementById("diary");
+
+        diary.addEventListener("input", updateCount);
+      });
+
+      function updateCount() {
+        const diary = document.getElementById("diary");
+        const countText = document.getElementById("countText");
+
+        if (!countText) return; // 🔒 안전장치
+
+        countText.innerText = `${diary.value.length}/300`;
+      }
+      </script>
+  </body>
+</html>

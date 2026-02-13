@@ -1,0 +1,831 @@
+.DATA {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 100%;
+  min-width: 375px;
+  min-height: 812px;
+  position: relative;
+}
+
+.DATA .group {
+  position: absolute;
+  top: 31px;
+  left: -41px;
+  width: 451px;
+  height: 839px;
+  opacity: 0.8;
+}
+
+.DATA .ellipse {
+  position: absolute;
+  top: 246px;
+  left: 362px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  filter: blur(75px);
+  background: linear-gradient(180deg, rgba(124, 70, 240, 1) 0%, rgba(124, 70, 240, 0.15) 100%);
+}
+
+.DATA .div {
+  position: absolute;
+  top: 554px;
+  left: 0;
+  width: 96px;
+  height: 96px;
+  border-radius: 48px;
+  filter: blur(75px);
+  background: linear-gradient(180deg, rgba(70, 189, 240, 1) 0%, rgba(70, 179, 240, 0.15) 100%);
+}
+
+.DATA .ellipse-2 {
+  position: absolute;
+  top: 224px;
+  left: 101px;
+  width: 74px;
+  height: 74px;
+  border-radius: 37px;
+  filter: blur(75px);
+  background: linear-gradient(180deg, rgba(95, 39, 255, 1) 0%, rgba(202, 184, 255, 1) 100%);
+}
+
+.DATA .ellipse-3 {
+  position: absolute;
+  top: 781px;
+  left: 269px;
+  width: 58px;
+  height: 58px;
+  border-radius: 29px;
+  filter: blur(65px);
+  background: linear-gradient(180deg, rgba(240, 182, 70, 1) 0%, rgba(240, 203, 70, 0.15) 100%);
+}
+
+.DATA .ellipse-4 {
+  position: absolute;
+  top: 0;
+  left: 13px;
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  filter: blur(75px);
+  background: linear-gradient(180deg, rgba(70, 240, 128, 1) 0%, rgba(70, 240, 138, 0.15) 100%);
+}
+
+.DATA .ellipse-5 {
+  position: absolute;
+  top: 345px;
+  left: 333px;
+  width: 118px;
+  height: 118px;
+  border-radius: 59px;
+  filter: blur(75px);
+  background: linear-gradient(180deg, rgba(237, 240, 70, 1) 0%, rgba(240, 233, 70, 0.15) 100%);
+}
+
+.DATA .rectangle {
+  position: absolute;
+  top: 102px;
+  left: 159px;
+  width: 64px;
+  height: 84px;
+  background-color: #5aedc4;
+  border-radius: 15px;
+}
+
+.DATA .rectangle-2 {
+  position: absolute;
+  top: 102px;
+  left: 235px;
+  width: 64px;
+  height: 84px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 4px 32px #0000000a;
+}
+
+.DATA .group-2 {
+  position: absolute;
+  top: 102px;
+  left: 311px;
+  width: 64px;
+  height: 84px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 4px 32px #0000000a;
+}
+
+.DATA .group-3 {
+  position: absolute;
+  top: 102px;
+  left: 83px;
+  width: 197px;
+  height: 84px;
+  display: flex;
+  gap: 109px;
+}
+
+.DATA .rectangle-3 {
+  width: 64px;
+  height: 84px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 4px 32px #0000000a;
+}
+
+.DATA .text-wrapper {
+  margin-top: 8px;
+  width: 22px;
+  height: 14px;
+  color: var(--colorblack);
+  font-family: var(--lexend-deca-regular-11px-font-family);
+  font-weight: var(--lexend-deca-regular-11px-font-weight);
+  font-size: var(--lexend-deca-regular-11px-font-size);
+  letter-spacing: var(--lexend-deca-regular-11px-letter-spacing);
+  line-height: var(--lexend-deca-regular-11px-line-height);
+  font-style: var(--lexend-deca-regular-11px-font-style);
+}
+
+.DATA .group-4 {
+  position: absolute;
+  top: 102px;
+  left: 7px;
+  width: 195px;
+  height: 84px;
+  display: flex;
+  gap: 107px;
+}
+
+.DATA .text-wrapper-2 {
+  margin-top: 8px;
+  width: 22px;
+  height: 14px;
+  color: #ffffff;
+  font-family: var(--lexend-deca-regular-11px-font-family);
+  font-weight: var(--lexend-deca-regular-11px-font-weight);
+  font-size: var(--lexend-deca-regular-11px-font-size);
+  letter-spacing: var(--lexend-deca-regular-11px-letter-spacing);
+  line-height: var(--lexend-deca-regular-11px-line-height);
+  font-style: var(--lexend-deca-regular-11px-font-style);
+}
+
+.DATA .text-wrapper-3 {
+  position: absolute;
+  top: 110px;
+  left: 331px;
+  color: var(--colorblack);
+  font-family: var(--lexend-deca-regular-11px-font-family);
+  font-weight: var(--lexend-deca-regular-11px-font-weight);
+  font-size: var(--lexend-deca-regular-11px-font-size);
+  letter-spacing: var(--lexend-deca-regular-11px-letter-spacing);
+  line-height: var(--lexend-deca-regular-11px-line-height);
+  font-style: var(--lexend-deca-regular-11px-font-style);
+}
+
+.DATA .text-wrapper-4 {
+  position: absolute;
+  top: 110px;
+  left: 103px;
+  color: var(--colorblack);
+  font-family: var(--lexend-deca-regular-11px-font-family);
+  font-weight: var(--lexend-deca-regular-11px-font-weight);
+  font-size: var(--lexend-deca-regular-11px-font-size);
+  letter-spacing: var(--lexend-deca-regular-11px-letter-spacing);
+  line-height: var(--lexend-deca-regular-11px-line-height);
+  font-style: var(--lexend-deca-regular-11px-font-style);
+}
+
+.DATA .text-wrapper-5 {
+  position: absolute;
+  top: 110px;
+  left: 27px;
+  color: var(--colorblack);
+  font-family: var(--lexend-deca-regular-11px-font-family);
+  font-weight: var(--lexend-deca-regular-11px-font-weight);
+  font-size: var(--lexend-deca-regular-11px-font-size);
+  letter-spacing: var(--lexend-deca-regular-11px-letter-spacing);
+  line-height: var(--lexend-deca-regular-11px-line-height);
+  font-style: var(--lexend-deca-regular-11px-font-style);
+}
+
+.DATA .text-wrapper-6 {
+  position: absolute;
+  top: 164px;
+  left: 179px;
+  font-family: var(--lexend-deca-regular-11px-font-family);
+  font-weight: var(--lexend-deca-regular-11px-font-weight);
+  color: #ffffff;
+  font-size: var(--lexend-deca-regular-11px-font-size);
+  letter-spacing: var(--lexend-deca-regular-11px-letter-spacing);
+  line-height: var(--lexend-deca-regular-11px-line-height);
+  font-style: var(--lexend-deca-regular-11px-font-style);
+}
+
+.DATA .text-wrapper-7 {
+  position: absolute;
+  top: 164px;
+  left: 256px;
+  font-family: var(--lexend-deca-regular-11px-font-family);
+  font-weight: var(--lexend-deca-regular-11px-font-weight);
+  color: var(--colorblack);
+  font-size: var(--lexend-deca-regular-11px-font-size);
+  letter-spacing: var(--lexend-deca-regular-11px-letter-spacing);
+  line-height: var(--lexend-deca-regular-11px-line-height);
+  font-style: var(--lexend-deca-regular-11px-font-style);
+}
+
+.DATA .text-wrapper-8 {
+  position: absolute;
+  top: 164px;
+  left: 333px;
+  font-family: var(--lexend-deca-regular-11px-font-family);
+  font-weight: var(--lexend-deca-regular-11px-font-weight);
+  color: var(--colorblack);
+  font-size: var(--lexend-deca-regular-11px-font-size);
+  letter-spacing: var(--lexend-deca-regular-11px-letter-spacing);
+  line-height: var(--lexend-deca-regular-11px-line-height);
+  font-style: var(--lexend-deca-regular-11px-font-style);
+}
+
+.DATA .text-wrapper-9 {
+  position: absolute;
+  top: 164px;
+  left: 105px;
+  font-family: var(--lexend-deca-regular-11px-font-family);
+  font-weight: var(--lexend-deca-regular-11px-font-weight);
+  color: var(--colorblack);
+  font-size: var(--lexend-deca-regular-11px-font-size);
+  letter-spacing: var(--lexend-deca-regular-11px-letter-spacing);
+  line-height: var(--lexend-deca-regular-11px-line-height);
+  font-style: var(--lexend-deca-regular-11px-font-style);
+}
+
+.DATA .text-wrapper-10 {
+  position: absolute;
+  top: 164px;
+  left: 31px;
+  font-family: var(--lexend-deca-regular-11px-font-family);
+  font-weight: var(--lexend-deca-regular-11px-font-weight);
+  color: var(--colorblack);
+  font-size: var(--lexend-deca-regular-11px-font-size);
+  letter-spacing: var(--lexend-deca-regular-11px-letter-spacing);
+  line-height: var(--lexend-deca-regular-11px-line-height);
+  font-style: var(--lexend-deca-regular-11px-font-style);
+}
+
+.DATA .text-wrapper-11 {
+  top: 132px;
+  left: 179px;
+  font-family: var(--lexend-deca-semi-bold-19px-font-family);
+  font-weight: var(--lexend-deca-semi-bold-19px-font-weight);
+  color: #ffffff;
+  font-size: var(--lexend-deca-semi-bold-19px-font-size);
+  position: absolute;
+  letter-spacing: var(--lexend-deca-semi-bold-19px-letter-spacing);
+  line-height: var(--lexend-deca-semi-bold-19px-line-height);
+  font-style: var(--lexend-deca-semi-bold-19px-font-style);
+}
+
+.DATA .text-wrapper-12 {
+  top: 132px;
+  left: 257px;
+  font-family: var(--lexend-deca-semi-bold-19px-font-family);
+  font-weight: var(--lexend-deca-semi-bold-19px-font-weight);
+  color: var(--colorblack);
+  font-size: var(--lexend-deca-semi-bold-19px-font-size);
+  position: absolute;
+  letter-spacing: var(--lexend-deca-semi-bold-19px-letter-spacing);
+  line-height: var(--lexend-deca-semi-bold-19px-line-height);
+  font-style: var(--lexend-deca-semi-bold-19px-font-style);
+}
+
+.DATA .text-wrapper-13 {
+  top: 132px;
+  left: 332px;
+  font-family: var(--lexend-deca-semi-bold-19px-font-family);
+  font-weight: var(--lexend-deca-semi-bold-19px-font-weight);
+  color: var(--colorblack);
+  font-size: var(--lexend-deca-semi-bold-19px-font-size);
+  position: absolute;
+  letter-spacing: var(--lexend-deca-semi-bold-19px-letter-spacing);
+  line-height: var(--lexend-deca-semi-bold-19px-line-height);
+  font-style: var(--lexend-deca-semi-bold-19px-font-style);
+}
+
+.DATA .text-wrapper-14 {
+  top: 132px;
+  left: 103px;
+  font-family: var(--lexend-deca-semi-bold-19px-font-family);
+  font-weight: var(--lexend-deca-semi-bold-19px-font-weight);
+  color: var(--colorblack);
+  font-size: var(--lexend-deca-semi-bold-19px-font-size);
+  position: absolute;
+  letter-spacing: var(--lexend-deca-semi-bold-19px-letter-spacing);
+  line-height: var(--lexend-deca-semi-bold-19px-line-height);
+  font-style: var(--lexend-deca-semi-bold-19px-font-style);
+}
+
+.DATA .text-wrapper-15 {
+  top: 132px;
+  left: 28px;
+  font-family: var(--lexend-deca-semi-bold-19px-font-family);
+  font-weight: var(--lexend-deca-semi-bold-19px-font-weight);
+  color: var(--colorblack);
+  font-size: var(--lexend-deca-semi-bold-19px-font-size);
+  position: absolute;
+  letter-spacing: var(--lexend-deca-semi-bold-19px-letter-spacing);
+  line-height: var(--lexend-deca-semi-bold-19px-line-height);
+  font-style: var(--lexend-deca-semi-bold-19px-font-style);
+}
+
+.DATA .rectangle-4 {
+  position: absolute;
+  top: 219px;
+  left: 23px;
+  width: 331px;
+  height: 107px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 4px 32px #0000000f;
+}
+
+.DATA .group-5 {
+  position: absolute;
+  top: 360px;
+  left: 19px;
+  width: 336px;
+  height: 118px;
+  background-color: #5aedc4;
+  border-radius: 15px;
+  box-shadow: 0px 4px 32px #00000021;
+}
+
+.DATA .text-wrapper-16 {
+  position: absolute;
+  top: 24px;
+  left: 143px;
+  font-family: "Lexend Deca-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.DATA .img {
+  position: absolute;
+  top: 65px;
+  left: 16px;
+  width: 24px;
+  height: 24px;
+}
+
+.DATA .text-wrapper-17 {
+  top: 255px;
+  left: 148px;
+  font-family: "Lexend Deca-Light", Helvetica;
+  font-weight: 300;
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: 0;
+  position: absolute;
+  line-height: normal;
+}
+
+.DATA .image {
+  position: absolute;
+  top: 228px;
+  left: 173px;
+  width: 15px;
+  height: 15px;
+  object-fit: cover;
+}
+
+.DATA .line {
+  position: absolute;
+  top: 276px;
+  left: 48px;
+  width: 278px;
+  height: 1px;
+}
+
+.DATA .text-wrapper-18 {
+  top: 286px;
+  left: 119px;
+  font-family: "Lexend Deca-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  position: absolute;
+  line-height: normal;
+}
+
+.DATA .group-6 {
+  position: absolute;
+  top: 708px;
+  left: 26px;
+  width: 130px;
+  height: 26px;
+}
+
+.DATA .rectangle-5 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 128px;
+  height: 26px;
+  background-color: #5aedc4;
+  border-radius: 6px;
+  border: 0.3px solid;
+  box-shadow: 0px 4px 4px #00000024;
+}
+
+.DATA .text-wrapper-19 {
+  top: 6px;
+  left: 34px;
+  font-family: "Lexend Deca-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 0;
+  position: absolute;
+  line-height: normal;
+}
+
+.DATA .group-7 {
+  position: absolute;
+  top: 708px;
+  left: 224px;
+  width: 130px;
+  height: 26px;
+}
+
+.DATA .text-wrapper-20 {
+  top: 6px;
+  left: 28px;
+  font-family: "Lexend Deca-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 0;
+  position: absolute;
+  line-height: normal;
+}
+
+.DATA .text-wrapper-21 {
+  top: 369px;
+  left: 55px;
+  font-family: "Lexend Deca-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 11px;
+  letter-spacing: 0;
+  position: absolute;
+  line-height: normal;
+}
+
+.DATA .line-2 {
+  position: absolute;
+  top: 531px;
+  left: 13px;
+  width: 353px;
+  height: 1px;
+  object-fit: cover;
+}
+
+.DATA .group-8 {
+  position: absolute;
+  top: 549px;
+  left: 17px;
+  width: 361px;
+  height: 104px;
+}
+
+.DATA .p {
+  top: 40px;
+  left: 15px;
+  width: 340px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: -0.6px;
+  position: absolute;
+  line-height: normal;
+}
+
+.DATA .text-wrapper-22 {
+  top: 0;
+  left: 4px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 20px;
+  text-align: right;
+  letter-spacing: -1px;
+  white-space: nowrap;
+  position: absolute;
+  line-height: normal;
+}
+
+.DATA .text-wrapper-23 {
+  top: 50px;
+  left: 15px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: -0.6px;
+  position: absolute;
+  line-height: normal;
+}
+
+.DATA .ellipse-6 {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #31c097;
+  border-radius: 4px;
+}
+
+
+
+.DATA .frame {
+  position: absolute;
+  top: 756px;
+  left: 0;
+  width: 375px;
+  height: 56px;
+  display: flex;
+}
+
+.DATA .group-9 {
+  width: 375px;
+  height: 56px;
+  position: relative;
+  background-image: url(./img/rectangle-1035.png);
+  background-size: 100% 100%;
+}
+
+.DATA .vuesax-bold-home {
+  position: absolute;
+  top: 16px;
+  left: 169px;
+  width: 24px;
+  height: 24px;
+}
+
+.DATA .vuesax-bulk-calendar {
+  position: absolute;
+  top: 18px;
+  left: 101px;
+  width: 24px;
+  height: 24px;
+}
+
+.DATA .vuesax-bulk-document {
+  position: absolute;
+  top: 19px;
+  left: 244px;
+  width: 24px;
+  height: 24px;
+}
+
+.DATA .vuesax-bulk-profile {
+  position: absolute;
+  top: 16px;
+  left: 319px;
+  width: 24px;
+  height: 24px;
+}
+
+.DATA .bar-chart-box-fill {
+  position: absolute;
+  top: 16px;
+  left: 28px;
+  width: 24px;
+  height: 24px;
+}
+
+.DATA .group-10 {
+  position: absolute;
+  top: 26px;
+  left: 20px;
+  width: 341px;
+  height: 25px;
+  display: flex;
+}
+
+.DATA .iconly-bold-arrow {
+  margin-top: 1px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+}
+
+.DATA .arrow-left-wrapper {
+  flex: 1;
+  display: flex;
+  padding: 0 3px;
+  align-items: center;
+  min-width: 24px;
+}
+
+.DATA .arrow-left {
+  width: 18px;
+  height: 12px;
+  background-image: url(./img/arrow-left.svg);
+  background-size: 100% 100%;
+}
+
+.DATA .icon-menu {
+  width: 24px;
+  height: 24px;
+  margin-left: 252px;
+}
+
+.DATA .vuesax-bold {
+  width: 24px;
+  height: 24px;
+  margin-left: 17px;
+}
+
+.DATA .text-wrapper-24 {
+  top: 369px;
+  left: 205px;
+  width: 118px;
+  font-family: "Lexend Deca-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 11px;
+  letter-spacing: 0;
+  position: absolute;
+  line-height: normal;
+}
+
+.DATA .text-wrapper-25 {
+  top: 404px;
+  left: 50px;
+  font-family: "Lexend Deca-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 40px;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.DATA .text-wrapper-26 {
+  top: 404px;
+  left: 217px;
+  font-family: "Lexend Deca-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 40px;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.DATA .line-3 {
+  position: absolute;
+  top: 369px;
+  left: 181px;
+  width: 1px;
+  height: 100px;
+  object-fit: cover;
+}
+
+
+/* 하단 바 전체 컨테이너 */
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 375px;
+    height: 70px;
+    background-color: #c4f3e5; /* 이미지의 연한 민트색 */
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 네비게이션 내부 정렬 */
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 500px; /* 모바일 폭 맞춤 */
+}
+
+/* 각 아이콘 버튼 영역 */
+.nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    padding: 10px;
+    transition: transform 0.2s;
+}
+
+.nav-item img {
+    width: 28px; /* 아이콘 크기 적절히 조절 */
+    height: 28px;
+}
+
+/* 클릭 효과 */
+.nav-item:active {
+    transform: scale(0.9); /* 누를 때 살짝 작아짐 */
+}
+.calendar-link {
+  display: inline-block; /* 또는 block */
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 100;
+}
+.back-link {
+  text-decoration: none;
+  display: contents; /* 기존의 flex나 absolute 레이아웃을 깨뜨리지 않게 합니다 */
+  cursor: pointer;
+}
+
+
+
+.DATA .line-4 {
+  position: absolute;
+  top: 531px;
+  left: 13px;
+  width: 353px;
+  height: 1px;
+  object-fit: cover;
+}
+
+.DATA .group-11 {
+  position: absolute;
+  top: 670px;
+  left: 17px;
+  width: 361px;
+  height: 104px;
+}
+
+.DATA .p2 {
+  top: 40px;
+  left: 15px;
+  width: 340px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: -0.6px;
+  position: absolute;
+  line-height: normal;
+}
+
+.DATA .text-wrapper-31 {
+  top: 0;
+  left: 4px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 20px;
+  text-align: right;
+  letter-spacing: -1px;
+  white-space: nowrap;
+  position: absolute;
+  line-height: normal;
+}
+
+.DATA .text-wrapper-32 {
+  top: 45px;
+  left: 15px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: -0.6px;
+  position: absolute;
+  line-height: normal;
+}
+
+.DATA .ellipse-8 {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #31c097;
+  border-radius: 4px;
+}
+
+
+.DATA {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+}

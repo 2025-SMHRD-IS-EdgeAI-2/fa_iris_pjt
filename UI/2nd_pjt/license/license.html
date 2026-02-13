@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>  
+  </head>
+  <body>
+    <div class="screen">
+      <div class="group">
+        <div class="ellipse"></div>
+        <div class="div"></div>
+        <div class="ellipse-2"></div>
+        <div class="ellipse-3"></div>
+        <div class="ellipse-4"></div>
+        <div class="ellipse-5"></div>
+      </div>
+      <div class="group-2">
+        <a href="javascript:history.back();" class="back-link"></a>
+        
+        <div class="text-wrapper">자격증 정보</div>
+        <div class="iconly-bold-arrow" id="backBtn">
+          <div class="arrow-left-wrapper">
+            <div class="arrow-left"></div>
+          </div>
+          <img class="arrow-left-wrapper" src="img/ArrowLeft.png" />
+        </div>
+        
+      </div>
+      <div class="frame">
+        
+      </div>
+      <div class="group-4">
+        <div class="rectangle"></div>
+        <div class="text-wrapper-2">
+          사용자 번호
+        </div>
+      </div>
+      <div class="text-wrapper-3">자격증 종류</div>
+       <select id="certificate-type" class="cert-select">
+          <option value="">선택하세요</option>
+          <option value="정보처리산업기사">정보처리산업기사</option>
+          <option value="정보처리기사">정보처리기사</option>
+          <option value="컴퓨터활용능력 1급">컴퓨터활용능력 1급</option>
+          <option value="컴퓨터활용능력 2급">컴퓨터활용능력 2급</option>
+          <option value="SQLD">SQLD</option>
+          <option value="ADsP">ADsP</option>
+          <option value="TOEIC">TOEIC</option>
+          <option value="기타">기타</option>
+        </select>
+      <img class="line" src="img/Line25.png" />
+      
+      <div class="rectangle-3"></div>
+      
+      <div class="group-5">
+        <div class="text-wrapper-4">공부 종료일</div>
+
+        <div class="rectangle-4">
+          <input type="date" id="end-date" class="date-input" />
+        </div>
+      </div>
+      <div class="rectangle-5" id="userIdText"></div>
+      <div class=>
+        <div class="group-6">
+        
+        </div>
+      </div>
+      <div class="study-start-group" >
+      <div class="study-start-title">공부 시작일</div>
+      <div class="rectangle-2">
+      <input type="date" id="start-date" class="date-input" />
+      </div>
+     
+      <img class="arrow-right-s-fill" src="img/arrow-right-s-fill.png" />
+      </div>
+      
+      <div class="group-7">
+        <div class="group-5" onclick="saveDiary()" style="cursor: pointer;"></div>
+        <img class="rectangle-6" src="img/Rectangle1037.png" />
+        <div class="text-wrapper-10">등록</div>
+      </div>
+      <div class="group-8">
+        <div class="text-wrapper-13">학습 기간 피드백</div>
+        <textarea id="diary"
+          class="diary-input"
+          placeholder="내용"
+          oninput="updateCount()"></textarea>
+      </div>
+      <div class="bottom-bar">
+        <nav class="bottom-nav">
+          <a href="../data/data.html" class="nav-item"><img src="img/bar-chart-box-fill.png"></a>
+          <a href="../license/license.html" class="nav-item"><img src="img/calendar.png"></a>
+          <a href="../main/main.html" class="nav-item"><img src="img/home.png"></a>
+          <a href="../diary/diary.html" class="nav-item"><img src="img/document-text.png"></a>
+          <a href="../profile/profile.html" class="nav-item"><img src="img/profile-2user.png"></a>
+        </nav>
+      </div>
+</div>
+    </div>
+    <script>
+    async function loadLicenceInfo() {
+      const user_no = localStorage.getItem("user_no");
+
+      if (!user_no) {
+        alert("로그인이 필요합니다.");
+        return;
+      }
+
+      // 사용자 ID 표시
+      document.getElementById("userIdText").innerText = user_no;
+
+      try {
+        const res = await fetch(
+          `http://192.168.219.128:4000/api/licence/${user_no}`
+        );
+
+        const result = await res.json();
+        console.log("📄 licence info:", result);
+
+        if (result.status !== "success" || !result.data) {
+          // 자격증 등록 안 된 사용자
+          return;
+        }
+
+        const {
+          licence_kind,
+          licence_start,
+          licence_end,
+          licence_feedback
+        } = result.data;
+
+        // 값 채우기
+        document.getElementById("certificate-type").value = licence_kind;
+        document.getElementById("start-date").value =
+          licence_start?.slice(0, 10) || "";
+
+        document.getElementById("end-date").value =
+          licence_end?.slice(0, 10) || "";
+
+        document.getElementById("diary").value =
+          licence_feedback || "";
+
+      } catch (err) {
+        console.error("❌ licence 불러오기 실패:", err);
+      }
+    }
+
+    // 페이지 진입 시 실행
+    loadLicenceInfo();
+    </script>
+  </body>
+</html>

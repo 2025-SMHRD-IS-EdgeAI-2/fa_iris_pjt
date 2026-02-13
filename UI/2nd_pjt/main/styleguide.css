@@ -1,0 +1,16 @@
+:root {
+    --base-shade-100: rgba(0, 0, 0, 1);
+    --colorprimary: rgba(95, 51, 225, 1);
+    --lexend-deca-semi-bold-14px-font-family: "Lexend Deca", Helvetica;
+    --lexend-deca-semi-bold-14px-font-weight: 600;
+    --lexend-deca-semi-bold-14px-font-size: 14px;
+    --lexend-deca-semi-bold-14px-letter-spacing: 0px;
+    --lexend-deca-semi-bold-14px-line-height: normal;
+    --lexend-deca-semi-bold-14px-font-style: normal;
+    --lexend-deca-regular-14px-font-family: "Lexend Deca", Helvetica;
+    --lexend-deca-regular-14px-font-weight: 400;
+    --lexend-deca-regular-14px-font-size: 14px;
+    --lexend-deca-regular-14px-letter-spacing: 0px;
+    --lexend-deca-regular-14px-line-height: normal;
+    --lexend-deca-regular-14px-font-style: normal;
+}

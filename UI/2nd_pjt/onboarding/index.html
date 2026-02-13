@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="./globals.css" />
+        <link rel="stylesheet" href="./styleguide.css" />
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <div class="screen">
+            <div class="group">
+                <div class="ellipse"></div>
+                <div class="div"></div>
+                <div class="ellipse-2"></div>
+                <div class="ellipse-3"></div>
+                <div class="ellipse-4"></div>
+                <div class="ellipse-5"></div>
+            </div>
+            <div class="btn-wrap">
+                <button class="action-btn" id="loginBtn">LOGIN</button>
+                <button class="action-btn" id="startBtn" style="display: none;">Let’s Start</button>
+                <button class="action-btn" id="signupBtn">SIGN UP</button>
+            </div>
+            <img class="computer-perspective" src="./img/computer_perspective_matte.png" />
+            <img class="calendar-perspective" src="./img/calendar_perspective_matte.png" />
+            <img class="chart-perspective" src="./img/chart_perspective_matte.png" />
+            <img class="books-perspective" src="./img/books_perspective_matte.png" />
+            <img class="dashboard" src="./img/dashboard_perspective_matte.png" />
+            <img class="clock-perspective" src="./img/clock_perspective_matte.png" />
+        
+
+        </div>
+
+    </body>
+    <script>
+        // LOGIN 버튼 -> 로그인 화면
+    document.getElementById("loginBtn").addEventListener("click", function () {
+        window.location.href = "../login/login.html";
+    });
+        // Let's Start 버튼 -> main 화면
+    document.getElementById("startBtn").addEventListener("click", function () {
+        window.location.href = "../main/main.html";
+    });
+        // SIGN UP 버튼 -> 회원가입 화면
+    document.getElementById("signupBtn").addEventListener("click", function () {
+        window.location.href = "../signup/signup.html";
+     });
+    </script>
+
+</html>

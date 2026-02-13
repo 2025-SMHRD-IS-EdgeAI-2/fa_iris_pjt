@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="screen">
+      <div class="group">
+        <div class="ellipse"></div>
+        <div class="div"></div>
+        <div class="ellipse-2"></div>
+        <div class="ellipse-3"></div>
+        <div class="ellipse-4"></div>
+        <div class="ellipse-5"></div>
+      </div>
+      <div class="frame">
+        <div class="text-field">
+          <div class="state-layer-wrapper">
+            <div class="state-layer">
+              <div class="content">
+                <div class="input-text">ID</div>
+                <input id="userID" class="input-real" type="text" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-field-wrapper">
+        <div class="text-field-2">
+          <div class="state-layer-wrapper">
+            <div class="state-layer-2">
+              <div class="content">
+                <div class="input-text">Password</div>
+                <input id="userPw" class="input-real" type="text" />
+              </div>
+              <div class="trailing-icon"><img class="eye-off" src="img/eye-off.svg" /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="div-wrapper">
+        <div class="text-field-3">
+          <div class="state-layer-wrapper">
+            <div class="state-layer">
+              <div class="content">
+                <div class="input-text">Username</div>
+                <input id="username" class="input-real"  type="text" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="frame-2">
+        <div class="text-field-4">
+          <div class="state-layer-wrapper">
+            <div class="state-layer">
+              <div class="content">
+                <div class="input-text">Email</div>
+                <input id="email"  class="input-real" type="text" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-field-5">
+        <div class="content-wrapper">
+          <div class="content">
+            <div class="input-text">Gender</div>
+            <input id="gender" class="input-real" type="text" />
+          </div>
+        </div>
+      </div>
+      <div class="text-wrapper-2">Profile</div>
+      <div class="dp">
+        <div class="ellipse-6"></div>
+        <img class="vuesax-bold-user" src="img/user.svg" />
+        
+      </div>
+      <div class="frame-3"><div class="text-wrapper-3" id="nextBtn">NEXT</div></div>
+      <div class="text-field-6">
+        <div class="content-wrapper">
+          <div class="content">
+            <div class="input-text">Age</div>
+            <input id="age" class="input-real" type="number" /></div>
+        </div>
+      </div>
+      <div class="text-field-7">
+        <div class="state-layer-3">
+          <div class="content-2">
+            <div class="text-wrapper-4" id="signupDate" >YYYY.MM.DD</div>
+            <div class="label-text-3"><div class="text-wrapper">User Signup Date</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="text-field-8">
+        <div class="state-layer-3">
+          <div class="content-2">
+            <div class="text-wrapper-4" id="userNo">00000000</div>
+            <div class="label-text-3"><div class="text-wrapper">User&nbsp;&nbsp;No</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-bar">
+        <nav class="bottom-nav">
+          <a href="../data/data.html" class="nav-item"><img src="img/bar-chart-box-fill.png"></a>
+          <a href="../license/license.html" class="nav-item"><img src="img/calendar.png"></a>
+          <a href="../main/main.html" class="nav-item"><img src="img/home.png"></a>
+          <a href="../diary/diary.html" class="nav-item"><img src="img/document-text.png"></a>
+          <a href="../profile/profile.html" class="nav-item"><img src="img/profile-2user.png"></a>
+        </nav>
+      </div>
+    </div>
+    <script>
+      async function loadProfile() {
+        const res = await fetch("/api/profile");
+        const data = await res.json();
+
+        document.getElementById("userID").value = data.login_id;
+        document.getElementById("username").value = data.user_name;
+        document.getElementById("email").value = data.email;
+        document.getElementById("gender").value = data.gender;
+        document.getElementById("age").value = data.age;
+
+        document.getElementById("userNo").innerText = data.user_no;
+        document.getElementById("signupDate").innerText =
+          data.created_at.slice(0, 10);
+      }
+
+      loadProfile();
+
+      document.getElementById("nextBtn").addEventListener("click", updateProfile);
+
+      async function updateProfile() {
+        const payload = {
+          user_name: document.getElementById("username").value,
+          email: document.getElementById("email").value,
+          gender: document.getElementById("gender").value,
+          age: document.getElementById("age").value
+        };
+
+        const res = await fetch("/api/profile", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          alert("프로필이 수정되었습니다");
+          window.location.href = "../main/main.html";
+        } else {
+          alert("수정 실패");
+        }
+      }
+    </script>
+  </body>
+</html>

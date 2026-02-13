@@ -1,0 +1,756 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  height: 812px;
+  align-items: center;
+  gap: 59px;
+  position: relative;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.screen .group {
+  position: relative;
+  width: 451px;
+  height: 839px;
+  margin-left: -38px;
+  margin-right: -38px;
+  opacity: 0.8;
+}
+
+.screen .ellipse {
+  position: absolute;
+  top: 246px;
+  left: 362px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  filter: blur(75px);
+  background: linear-gradient(180deg, rgba(124, 70, 240, 1) 0%, rgba(124, 70, 240, 0.15) 100%);
+}
+
+.screen .div {
+  position: absolute;
+  top: 554px;
+  left: 0;
+  width: 96px;
+  height: 96px;
+  border-radius: 48px;
+  filter: blur(75px);
+  background: linear-gradient(180deg, rgba(70, 189, 240, 1) 0%, rgba(70, 179, 240, 0.15) 100%);
+}
+
+.screen .ellipse-2 {
+  position: absolute;
+  top: 224px;
+  left: 101px;
+  width: 74px;
+  height: 74px;
+  border-radius: 37px;
+  filter: blur(75px);
+  background: linear-gradient(180deg, rgba(95, 39, 255, 1) 0%, rgba(202, 184, 255, 1) 100%);
+}
+
+.screen .ellipse-3 {
+  position: absolute;
+  top: 781px;
+  left: 269px;
+  width: 58px;
+  height: 58px;
+  border-radius: 29px;
+  filter: blur(65px);
+  background: linear-gradient(180deg, rgba(240, 182, 70, 1) 0%, rgba(240, 203, 70, 0.15) 100%);
+}
+
+.screen .ellipse-4 {
+  position: absolute;
+  top: 0;
+  left: 13px;
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  filter: blur(75px);
+  background: linear-gradient(180deg, rgba(70, 240, 128, 1) 0%, rgba(70, 240, 138, 0.15) 100%);
+}
+
+.screen .ellipse-5 {
+  position: absolute;
+  top: 345px;
+  left: 333px;
+  width: 118px;
+  height: 118px;
+  border-radius: 59px;
+  filter: blur(75px);
+  background: linear-gradient(180deg, rgba(237, 240, 70, 1) 0%, rgba(240, 233, 70, 0.15) 100%);
+}
+
+.screen .group-2 {
+  position: absolute;
+  top: 29px;
+  left: 21px;
+  width: 342px;
+  height: 31px;
+}
+
+.screen .icon-menu {
+  position: absolute;
+  top: 1px;
+  left: 276px;
+  width: 24px;
+  height: 24px;
+}
+
+.screen .text-wrapper {
+  top: 1px;
+  left: 96px;
+  font-family: "Lexend Deca-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 24px;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.screen .iconly-bold-arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  cursor: pointer;
+}
+
+.screen .arrow-left-wrapper {
+  flex: 1;
+  display: flex;
+  padding: 0 3px;
+  align-items: center;
+  min-width: 24px;
+  
+}
+
+.screen .arrow-left {
+  width: 18px;
+  height: 12px;
+  background-image: url(./img/arrow-left.svg);
+  background-size: 100% 100%;
+}
+
+.screen .vuesax-bold {
+  position: absolute;
+  top: 1px;
+  left: 316px;
+  width: 24px;
+  height: 24px;
+}
+
+.screen .frame {
+  position: absolute;
+  top: 756px;
+  left: 0;
+  width: 375px;
+  height: 56px;
+}
+
+.screen .group-3 {
+  position: fixed;
+  width: 375px;
+  height: 56px;
+  background-image: url(./img/Rectangle1035.png);
+  background-size: 100% 100%;
+  z-index: 9999;
+}
+
+.screen .vuesax-bold-home {
+  position: absolute;
+  top: 16px;
+  left: 169px;
+  width: 24px;
+  height: 24px;
+}
+
+.screen .vuesax-bulk-calendar {
+  position: absolute;
+  top: 18px;
+  left: 101px;
+  width: 24px;
+  height: 24px;
+}
+
+.screen .vuesax-bulk-document {
+  position: absolute;
+  top: 19px;
+  left: 244px;
+  width: 24px;
+  height: 24px;
+}
+
+.screen .vuesax-bulk-profile {
+  position: absolute;
+  top: 16px;
+  left: 319px;
+  width: 24px;
+  height: 24px;
+}
+
+.screen .bar-chart-box-fill {
+  position: absolute;
+  top: 16px;
+  left: 28px;
+  width: 24px;
+  height: 24px;
+}
+
+.screen .group-4 {
+  position: absolute;
+  top: 92px;
+  left: 19px;
+  width: 341px;
+  height: 118px;
+}
+
+.screen .rectangle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 339px;
+  height: 118px;
+  background-color: #5aedc4;
+  border-radius: 15px;
+  box-shadow: 0px 4px 4px #0000002b;
+}
+
+.screen .text-wrapper-2 {
+  top: 19px;
+  left: 23px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 13px;
+  text-align: center;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.screen .text-wrapper-3 {
+  top: 172px;
+  left: 42px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 13px;
+  text-align: center;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.screen .line {
+  position: absolute;
+  top: 147px;
+  left: 32px;
+  width: 319px;
+  height: 1px;
+}
+
+
+
+.screen .group-5 {
+  position: absolute;
+  top: 227px;
+  left: 10px;
+  width: 333px;
+  height: 53px;
+}
+
+.screen .rectangle-4 {
+  position: absolute;
+  top: 27px;
+  left: 192px;
+  width: 137px;
+  height: 29px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px #0000002b;
+}
+
+.screen .text-wrapper-4 {
+  top: 0;
+  left: 193px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 12px;
+  text-align: center;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.screen .text-wrapper-5 {
+  top: 33px;
+  left: 0;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.screen .calendar-fill {
+  position: absolute;
+  top: 30px;
+  left: 302px;
+  width: 20px;
+  height: 20px;
+}
+
+.screen .rectangle-5 {
+  position: absolute;
+  top: 108px;
+  left: 261px;
+  width: 84px;
+  height: 25px;
+  background-color: #ffffff;
+  border-radius: 5px;  display: flex;
+  align-items: center;      /* 세로 중앙 */
+  justify-content: center;  /* 가로 중앙 */
+  font-size: 14px;          /* 필요하면 조절 */
+  font-weight: 500;
+  color: #333;
+}
+
+.screen .text-wrapper-6 {
+  position: absolute;
+  top: 113px;
+  left: 277px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 11px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-7 {
+  top: 175px;
+  left: 217px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 11px;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.screen .arrow-down-s-line {
+  position: absolute;
+  top: 173px;
+  left: 321px;
+  width: 20px;
+  height: 20px;
+}
+
+.screen .search-line {
+  position: absolute;
+  top: 174px;
+  left: 301px;
+  width: 17px;
+  height: 16px;
+}
+
+.screen .group-6 {
+  position: relative;
+  height: 100%;
+}
+
+.screen .vector {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -1493.75%;
+  left: 4282.35%;
+}
+
+.screen .img {
+  position: absolute;
+  width: 84.64%;
+  height: 84.64%;
+  top: 8.33%;
+  left: 8.33%;
+}
+
+.screen .text-wrapper-8 {
+  top: 231px;
+  left: 22px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 12px;
+  text-align: center;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+  flex-direction: column
+}
+
+.screen .line-2 {
+  position: absolute;
+  top: 304px;
+  left: 11px;
+  width: 351px;
+  height: 1px;
+}
+
+.screen .arrow-right-s-fill {
+  position: absolute;
+  top: 0px;
+  left: 150px;
+  width: 24px;
+  height: 24px;
+}
+
+.screen .calendar-fill-2 {
+  position: absolute;
+  top: 261px;
+  left: 130px;
+  width: 20px;
+  height: 20px;
+}
+
+.screen .text-wrapper-9 {
+  top: 263px;
+  left: 224px;
+  position: absolute;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.screen .group-7 {
+  position: absolute;
+  top: 705px;
+  left: 125px;
+  width: 113px;
+  height: 38px;
+  box-shadow: 0px 4px 4px #00000033;
+  transition: transform 0.2s, opacity 0.2s;
+  cursor: pointer;
+}
+
+
+.screen .rectangle-6 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 111px;
+  height: 38px;
+}
+
+.screen .text-wrapper-10 {
+  top: 7px;
+  left: 43px;
+  font-family: "Lexend Deca-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 19px;
+  text-align: center;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.screen .group-8 {
+  position: absolute;
+  top: 321px;
+  left: 18px;
+  width: 332px;
+  height: 355px;
+}
+
+.screen .rectangle-7 {
+  position: absolute;
+  top: 29px;
+  left: 0;
+  width: 326px;
+  height: 326px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  border: 0.5px solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #0000002b;
+}
+
+.screen .text-wrapper-11 {
+  top: 45px;
+  left: 22px;
+  font-family: "Baloo Bhaijaan 2-Regular", Helvetica;
+  font-weight: 400;
+  color: #79747e;
+  font-size: 10px;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.screen .line-3 {
+  position: absolute;
+  top: 44px;
+  left: 22px;
+  width: 1px;
+  height: 18px;
+  object-fit: cover;
+}
+
+.screen .text-wrapper-12 {
+  top: 353px;
+  left: 281px;
+  font-family: "Lexend Deca-ExtraLight", Helvetica;
+  font-weight: 200;
+  color: #000000;
+  font-size: 11px;
+  text-align: center;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.screen .text-wrapper-13 {
+  top: 0;
+  left: 1px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 19px;
+  text-align: center;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+
+
+/* 부모 그룹: 전체적인 위치 잡기 */
+.study-start-group {
+  position: absolute;
+  width: 137px;
+  left: 18px; /* 이미지 디자인에 맞춰 조정 */
+  top: 257px; /* 이미지 디자인에 맞춰 조정 */
+  z-index: 50;
+  flex-direction: column;
+  
+}
+
+/* 흰색 박스 디자인 (기존 rectangle-2 스타일 유지) */
+.rectangle-2 {
+  position: absolute;
+  top: 0.3px;
+  left: 10px;
+  width: 130px;
+  height: 28px;
+  background-color: #ffffff;
+  border-radius: 8px;
+ 
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 입력창: 박스 안에 꽉 차게 */
+.date-input {
+  position: static !important;   /* absolute 제거 */
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+/* 브라우저 기본 아이콘 숨기고 우리 아이콘 사용 */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+/* 폰트 및 공통 스타일 통일 */
+.text-wrapper-8, .text-wrapper-4 {
+  font-family: "Pretendard", "Apple SD Gothic Neo", sans-serif; /* 왼쪽 글씨체 기준 */
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* 입력 칸 내부의 폰트 맞춤 */
+.date-input-field {
+  border: none;
+  background: transparent;
+  font-family: inherit; /* 부모의 폰트를 그대로 상속 */
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* 브라우저 기본 달력 아이콘 제거 (우리가 넣은 이미지를 쓰기 위함) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+
+
+/* 달력 이미지 위치 고정 */
+.calendar-icon {
+  position: absolute;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+  pointer-events: none; /* 클릭은 input이 받도록 설정 */
+}
+.study-start-title{
+  position: relative;
+  top: -25px;   /* 너 화면에 맞게 조절 */
+  left: 20px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #000;
+  z-index: 10;
+}
+.diary-input{
+  position: absolute;
+  top: 30px;   /* 너 UI에 맞게 조절 */
+  left: 10px;
+  width: 330px;
+  height: 345px;
+
+  border: 2px solid #000;
+  border-radius: 16px;
+
+  padding: 15px;
+  font-size: 13px;
+
+  resize: none;
+  outline: none;
+  background: white;
+}
+/* 네비게이션 내부 정렬 */
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 375px;
+    height: 70px;
+    background-color: #c4f3e5; /* 이미지의 연한 민트색 */
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 네비게이션 내부 정렬 */
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 500px; /* 모바일 폭 맞춤 */
+}
+
+/* 각 아이콘 버튼 영역 */
+.nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    padding: 10px;
+    transition: transform 0.2s;
+}
+
+.nav-item img {
+    width: 28px; /* 아이콘 크기 적절히 조절 */
+    height: 28px;
+}
+
+/* 클릭 효과 */
+.nav-item:active {
+    transform: scale(0.9); /* 누를 때 살짝 작아짐 */
+}
+
+
+.cert-select {
+  position: absolute;
+  width: 150px;
+  height: 28px;
+  top: 170px !important;
+  left: 200px !important;
+  border-radius: 10px;
+  border: none;
+  padding: 0 12px;
+  font-size: 12px;
+  outline: none;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08);
+  
+}
+
+/* 시작일/종료일 한 줄 정렬 */
+.date-row {
+  position: absolute;
+  top: 240px;
+  left: 20px;
+  display: flex;
+  gap: 30px;
+}
+
+/* 시작일/종료일 각각 */
+.date-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* 제목 */
+.date-title {
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 12px;
+  color: #000;
+}
+
+/* 흰 박스 */
+.date-box {
+  width: 140px;
+  height: 32px;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0px 4px 4px #0000002b;
+  
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+

@@ -1,0 +1,331 @@
+
+.frame {
+  position: relative;
+  width: 288px;
+  height: 812px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.frame .div {
+  display: flex;
+  flex-direction: column;
+  width: 248px;
+  align-items: flex-start;
+  position: absolute;
+  top: 101px;
+  left: 12px;
+}
+
+.frame .text-wrapper {
+  position: relative;
+  align-self: stretch;
+  margin-top: -1.00px;
+  font-family: var(--android-h6-font-family);
+  font-weight: var(--android-h6-font-weight);
+  color: var(--black);
+  font-size: var(--android-h6-font-size);
+  letter-spacing: var(--android-h6-letter-spacing);
+  line-height: var(--android-h6-line-height);
+  font-style: var(--android-h6-font-style);
+}
+
+.frame .div-2 {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.frame .text-wrapper-2 {
+  position: relative;
+  flex: 1;
+  margin-top: -1.00px;
+  font-family: var(--android-subtitle-2-font-family);
+  font-weight: var(--android-subtitle-2-font-weight);
+  color: var(--gray-100);
+  font-size: var(--android-subtitle-2-font-size);
+  letter-spacing: var(--android-subtitle-2-letter-spacing);
+  line-height: var(--android-subtitle-2-line-height);
+  font-style: var(--android-subtitle-2-font-style);
+}
+
+.frame .arrow-drop-down {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.frame .bottom {
+  position: absolute;
+  top: 585px;
+  left: 5px;
+  height: 233px;
+  width: 248px;
+  display: flex;
+}
+
+.frame .bottom-icons {
+  height: 212px;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 248px;
+  display: flex;
+}
+
+.frame .nav-text-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.frame .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  border-radius: 4px;
+}
+
+.frame .vector-wrapper {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.frame .vector {
+  position: absolute;
+  width: 81.87%;
+  height: 83.34%;
+  top: 8.33%;
+  left: 7.74%;
+}
+
+.frame .label {
+  color: #2e363f;
+  position: relative;
+  flex: 1;
+  margin-top: -1.00px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+
+.frame .img {
+  position: absolute;
+  width: 83.31%;
+  height: 83.33%;
+  top: 8.33%;
+  left: 8.33%;
+}
+
+.frame .top-items-wrapper {
+  display: flex;
+  width: 248px;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  position: absolute;
+  top: 189px;
+  left: 5px;
+}
+
+.frame .top-items {
+  position: relative;
+  width: 248px;
+  height: 396px;
+}
+
+.frame .nav-text-item-2 {
+  display: flex;
+  flex-direction: column;
+  width: 248px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: -1px;
+}
+
+.frame .label-2 {
+  color: var(--primary-gray);
+  position: relative;
+  flex: 1;
+  margin-top: -1.00px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+
+.frame .content-2 {
+  position: absolute;
+  top: 112px;
+  left: -1px;
+  width: 248px;
+  height: 48px;
+  border-radius: 4px;
+}
+
+.frame .text-wrapper-3 {
+  top: 12px;
+  left: 49px;
+  width: 146px;
+  color: var(--primary-gray);
+  position: absolute;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+
+.frame .u-plus-circle {
+  position: absolute;
+  width: 8.06%;
+  height: 41.67%;
+  top: 29.17%;
+  left: 87.10%;
+}
+
+.frame .chat-line {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.frame .text-wrapper-20 {
+  top: 226px;
+  left: 49px;
+  color: #324054;
+  white-space: nowrap;
+  position: absolute;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+
+.frame .vector-2 {
+  position: absolute;
+  width: 8.06%;
+  height: 5.05%;
+  top: 56.57%;
+  left: 4.03%;
+}
+
+.frame .p {
+  top: 174px;
+  left: 47px;
+  color: #324054;
+  white-space: nowrap;
+  position: absolute;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+
+.frame .todo-line {
+  position: absolute;
+  top: 173px;
+  left: 7px;
+  width: 24px;
+  height: 24px;
+}
+
+.frame .text-wrapper-5 {
+  position: absolute;
+  top: 70px;
+  left: 48px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #324054;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.frame .vector-3 {
+  position: absolute;
+  width: 8.06%;
+  height: 5.05%;
+  top: 17.42%;
+  left: 4.03%;
+}
+
+.frame .line {
+  top: 170px;
+  height: 1px;
+  position: absolute;
+  left: 7px;
+  width: 272px;
+  object-fit: cover;
+}
+
+.frame .line-2 {
+  top: 690px;
+  height: 2px;
+  position: absolute;
+  left: 7px;
+  width: 272px;
+  object-fit: cover;
+}
+
+.frame .dp {
+  position: absolute;
+  top: 38px;
+  left: 12px;
+  width: 47px;
+  height: 47px;
+}
+
+.frame .vuesax-bold-user {
+  position: absolute;
+  width: 32px;
+  height: 35px;
+  top: 50px;
+  left: 19px;
+}
+
+.nav-link {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.frame .line,
+.frame .line-2,
+.frame .dp {
+  pointer-events: none;
+}
+.frame .top-items-wrapper,
+.frame .bottom {
+
+  z-index: 10;
+}

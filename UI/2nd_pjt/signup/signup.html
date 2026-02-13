@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="screen">
+      <div class="group">
+        <div class="ellipse"></div>
+        <div class="div"></div>
+        <div class="ellipse-2"></div>
+        <div class="ellipse-3"></div>
+        <div class="ellipse-4"></div>
+        <div class="ellipse-5"></div>
+      </div>
+      <div class="frame"><div class="text-wrapper">Sign up</div></div>
+      <div class="frame-wrapper">
+        <div class="frame-2">
+          <div class="frame-3">
+            <div class="frame-4">
+              <input id="agree" type="checkbox" class="img" />
+              <p class="i-agree-to-all-the">
+                <span class="span">I agree to all the </span>
+                <span class="text-wrapper-2">Terms</span>
+                <span class="span"> and </span>
+                <span class="text-wrapper-2">Privacy Policies</span>
+              </p>
+            </div>
+            <form id="signupForm">
+            <div class="text-field-wrapper">
+              <div class="text-field">
+                <div class="state-layer-wrapper">
+                  <div class="state-layer">
+                    <div class="content">
+                      <div class="input-text">Email</div>
+                      <input id="email" class="input-real" type="email" /></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-field-2">
+              <div class="div-wrapper">
+                <div class="state-layer">
+                  <div class="content">
+                    <div class="input-text">Age</div>
+                    <input id="age" class="input-real" type="number" /></div>
+                </div>
+              </div>
+            </div>
+            <div class="text-field-3">
+              <div class="state-layer-wrapper">
+                <div class="state-layer">
+                  <div class="content">
+                    <div class="input-text">Gender</div>
+
+                    <div class="gender-radio">
+                      <label>
+                        <input type="radio" name="gender" value="F" checked />
+                        F
+                      </label>
+
+                      <label>
+                        <input type="radio" name="gender" value="M" />
+                        M
+                      </label>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-field-12">
+              <div class="div-wrapper">
+                <div class="state-layer">
+                  <div class="content">
+                    <div class="input-text">Device Number</div>
+                    <input id="DeviceNumber" class="input-real" type="text" /></div>
+                </div>
+              </div>
+            </div>
+            <div class="text-field-13">
+              <div class="state-layer-wrapper">
+                <div class="state-layer">
+                  <div class="content">
+                    <div class="input-text">Webcam Number</div>
+                    <input id="WebcamNumber" class="input-real" type="text" />
+                  </div>
+                </div>
+              </div>
+            </div>  
+          </div>
+          <div class="text-field-4">
+            <div class="state-layer-wrapper">
+              <div class="state-layer-2">
+                <div class="content">
+                  <div class="input-text">Confirm Password</div>
+                  <input id="confirmPassword" class="input-real" type="password" /></div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="text-field-5">
+            <div class="state-layer-wrapper">
+              <div class="state-layer-2">
+                <div class="content">
+                <div class="input-text">Password</div>
+                  <input id="password" class="input-real" type="password" />
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="frame-5">
+            <div class="rectangle"></div>
+            <div class="text-wrapper-3">Or Sign up with</div>
+            <div class="rectangle"></div>
+          </div>
+          <img class="frame-6" src="./img/Frame228.png" />
+          <button class="button" type="submit" >
+            <div class="style-layer">
+                <div class="button-2">Create account</div>
+            </div>
+          </button>
+          </form>
+          <div class="text-wrapper-4">계정이 이미 있으신가요?</div>
+          <a href="../login/login.html" style="text-decoration: none;">
+          <div class="text-wrapper-5">로그인</div>
+          </a>
+          <div class="text-field-7">
+            <div class="state-layer-wrapper">
+              <div class="state-layer">
+                <div class="content">
+                  <div class="input-text">Username</div>
+                  <input id="username" class="input-real"  type="text" />
+                </div>
+              </div>
+            </div>
+          </div>
+         <div class="text-field-6">
+            <div class="state-layer-wrapper">
+              <div class="state-layer">
+                <div class="content">
+                  <div class="input-text">ID</div>
+                  <input
+                    id="userId"
+                    class="input-real"
+                    type="text"
+                    />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("signupForm");
+
+      const username = document.getElementById("username");
+      const userId = document.getElementById("userId");
+      const password = document.getElementById("password");
+      const confirmPassword = document.getElementById("confirmPassword");
+      const email = document.getElementById("email");
+      const age = document.getElementById("age");
+      const agree = document.getElementById("agree");
+      const DeviceNumber = document.getElementById("DeviceNumber");
+      const WebcamNumber = document.getElementById("WebcamNumber");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // ✅ submit 시점에 gender 가져오기 (중요)
+        const genderEl = document.querySelector('input[name="gender"]:checked');
+        const gender = genderEl ? genderEl.value : "";
+
+        if (
+          !username.value.trim() ||
+          !userId.value.trim() ||
+          !password.value.trim() ||
+          !confirmPassword.value.trim() ||
+          !email.value.trim() ||
+          !age.value.trim() ||
+          !gender
+        ) {
+          alert("모든 항목을 입력해주세요!");
+          return;
+        }
+
+        if (password.value !== confirmPassword.value) {
+          alert("비밀번호가 일치하지 않습니다!");
+          return;
+        }
+
+        if (!agree.checked) {
+          alert("약관에 동의해주세요!");
+          return;
+        }
+
+        try {
+          const res = await fetch("http://192.168.219.128:4000/api/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              user_name: username.value.trim(),
+              login_id: userId.value.trim(),
+              user_pwd: password.value.trim(),
+              email: email.value.trim(),
+              age: age.value.trim(),
+              gender: gender,
+              device_num: DeviceNumber.value.trim(),
+              webcam_num: WebcamNumber.value.trim()
+            })
+          });
+
+          const data = await res.json();
+
+          if (data.status === "success") {
+            alert("회원가입 성공!");
+            window.location.href = "../login/login.html";
+          } else {
+            alert(data.msg || "회원가입 실패");
+          }
+
+        } catch (err) {
+          console.error(err);
+          alert("서버 연결 실패");
+        }
+      });
+    });
+    </script>
+
+  </body>
+</html>
+
