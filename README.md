@@ -78,5 +78,28 @@
 * 형상 관리 도구 : GitHub
 
 ## 시스템 아키텍처
+<img width="971" height="561" alt="image" src="https://github.com/user-attachments/assets/d5bdcd17-20e3-4cfd-9c29-2a8fab8a1862" />
+
+## 유스 케이스
+<img width="920" height="574" alt="image" src="https://github.com/user-attachments/assets/5e04b9b6-56fd-46bc-af92-480e2120274b" />
+
+## 서비스 흐름도
 
 
+## ER 다이어그램
+<img width="960" height="556" alt="image" src="https://github.com/user-attachments/assets/8e6dd0d8-11dc-48d3-a5c7-6c0e827fc873" />
+
+## 화면구성
+* ON-BOARDING / 시작 / 로그인
+<img width="1071" height="439" alt="image" src="https://github.com/user-attachments/assets/24eea75a-28c4-4d0b-8be2-1b288fff4ede" />
+  
+* 측정치 출력 화면(당일, 일자별)
+<img width="624" height="451" alt="image" src="https://github.com/user-attachments/assets/143ff299-a6fd-4706-8c4b-c845e55151fa" />
+  
+* 다이어리 기입 및 자격증 관리 화면
+
+
+
+## 팀원 역할
+
+## 트러블 슈팅
