@@ -78,7 +78,7 @@
 * 형상 관리 도구 : GitHub
 
 ## 시스템 아키텍처
-<img width="971" height="561" alt="image" src="https://github.com/user-attachments/assets/d5bdcd17-20e3-4cfd-9c29-2a8fab8a1862" />
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/178d7382-999b-42a7-8f43-dda798429475" />
 
 ## 유스 케이스
 <img width="920" height="574" alt="image" src="https://github.com/user-attachments/assets/5e04b9b6-56fd-46bc-af92-480e2120274b" />
