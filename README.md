@@ -12,7 +12,7 @@
 <img width="881" height="675" alt="image" src="https://github.com/user-attachments/assets/5c464de1-cb24-46b9-b19a-d5ad3d9d9d3e" />
 
 ## 프로젝트 기간
-* 2026.01.29 ~ 2026.02.13
+* 2026.01.12 ~ 2026.02.13
 
 ## 주요기능
 * 영상 분석 기술 - 눈의 크기, 눈 깜박임 횟수, 얼굴의 움직임, 표정 변화
