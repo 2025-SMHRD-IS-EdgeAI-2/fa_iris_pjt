@@ -121,12 +121,7 @@
     <td align="center"><b>Back-End, 통합 테스트 구현</b></td>
     <td align="center"><b>Front-End, 통합 테스트 구현</b></td>
   </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-  </tr>
+
 </table>
 
 ## Trouble Shooting
