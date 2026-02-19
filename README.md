@@ -78,12 +78,13 @@
 * 형상 관리 도구 : GitHub
 
 ## 시스템 아키텍처
-<img width="971" height="561" alt="image" src="https://github.com/user-attachments/assets/d5bdcd17-20e3-4cfd-9c29-2a8fab8a1862" />
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/9dbc5eb9-7e74-406f-a058-0a15433e0e57" />
 
 ## 유스 케이스
 <img width="920" height="574" alt="image" src="https://github.com/user-attachments/assets/5e04b9b6-56fd-46bc-af92-480e2120274b" />
 
 ## 서비스 흐름도
+<img width="985" height="507" alt="image" src="https://github.com/user-attachments/assets/5f037ebe-01ba-42ac-953a-310ba14f85c8" />
 
 
 ## ER 다이어그램
@@ -120,12 +121,22 @@
     <td align="center"><b>Back-End, 통합 테스트 구현</b></td>
     <td align="center"><b>Front-End, 통합 테스트 구현</b></td>
   </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-  </tr>
+
 </table>
 
-## 트러블 슈팅
+## Trouble Shooting
+* TFT LCD Panel : 염가형 제품 사용으로 Backlight 파손
+  - TFT Panel 교체하였으나 동일한 문제로 화면 송출 불가
+  - 1602 LCD로 변경 설치
+* 센서 측정 신뢰도 : 센서값 신뢰도 의심, 스트레스 지수 측정 시 극단적인 값 출력
+  - 센서 측정값 세분화 (예시. 기존  1 단위 → 0.5 단위로 조정)
+* Front end 웹캠 연결 : 보안으로 인하여 웹캠 연결이 불가한 상황
+  - HTTPS로 보안 서버 변경 시도하였으나 문제 해결 실패
+  - 아이콘 제작 및 수동 작동으로 변경
+* Device - DB 연동 : Device - DB 직접 연동 시 request lib 충돌
+  - 중계 서버 방식을 채용(중계 서버 방식을 채용 중계 서버에서 측정값을 받아서 DB 등록)
+* LLM Service 제한 : 특정 시간 당 피드백 횟수가 20회로 제한
+  - 제품 특성 상 다횟수 측정하지 않을 것으로 예상
+  - 다수의 user 사용 시 유료화(or 광고 수입) 및 생성형 ai 업체와 컨소시엄 진행
+
+
