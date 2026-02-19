@@ -129,7 +129,7 @@
   </tr>
 </table>
 
-## Trouble Shooting
+## 트러블 슈팅
 * TFT LCD Panel : 염가형 제품 사용으로 Backlight 파손
   - TFT Panel 교체하였으나 동일한 문제로 화면 송출 불가
   - 1602 LCD로 변경 설치
